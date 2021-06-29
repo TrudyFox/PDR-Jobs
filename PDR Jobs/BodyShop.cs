@@ -12,6 +12,7 @@ namespace PDR_Jobs
         public String EmailAdress;
         public String PhoneNumber;
         public Address Address;
-        public List<Damage> Damages;
+        public List<damages> Damage;
+
     }
 }

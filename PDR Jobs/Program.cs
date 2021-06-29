@@ -7,12 +7,7 @@ namespace PDR_Jobs
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var test = new BodyShop();
-            var randomDude = new Tech();
-            randomDude.FirstName = "Joe";
-            randomDude.LastName = "doe";
 
-            Console.WriteLine($"tech: {randomDude.FirstName} {randomDude.LastName} - {randomDude.profilePage.Description}");
         }
 
         static Tech InputTechData()
@@ -28,6 +23,11 @@ namespace PDR_Jobs
         {
             //same as tech basically
             return null;
+        }
+
+        static void PrintTech(Tech tech)
+        {
+            Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.profilePage.Description}");
         }
     }
 }
