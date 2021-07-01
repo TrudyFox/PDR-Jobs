@@ -8,9 +8,11 @@ namespace PDR_Jobs
 {
     class Address
     {
-        public String State;
         public String HouseNumber;
         public String StreetName;
+        public String City;
+        public String State;
+        public String ZipCode;
         public String GoogleMapsLink;
         public GPSLocation GPSLocation;  //can probably be generated automatically via google maps
 

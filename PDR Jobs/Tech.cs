@@ -11,6 +11,8 @@ namespace PDR_Jobs
         public String FirstName;
         public String LastName;
         public Address Address;
+        public String Phone;
+        public String email;
         public ProfilePage profilePage;
     }
 }

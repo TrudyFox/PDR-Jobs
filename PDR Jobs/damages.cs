@@ -11,7 +11,7 @@ namespace PDR_Jobs
         public String hailSize;
         public String LotSize;
         public String numberTotaled;
-
+        public String PhotoFile;
 
     }
 }
