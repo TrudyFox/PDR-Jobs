@@ -9,12 +9,12 @@ namespace PDR_Jobs
     class BodyShop
     {
         public String Name;
-        public Address Address;
+        public Address Addresses;
         public String PhoneNumber;
         public String EmailAdress;
-        public List<damages> Damage;
-        public String SplitPercentage;
-        public String photoFile;
+        public List<Damage> Damages;
+        public float SplitPercentage;
+        public String PhotoFile;
 
     }
 }

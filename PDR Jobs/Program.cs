@@ -31,8 +31,9 @@ namespace PDR_Jobs
             var BodyShop = new BodyShop();
             Console.WriteLine("Body shop name");
             BodyShop.Name = Console.ReadLine();
+            var Address = new Address();
             Console.WriteLine("Address");
-            BodyShop.Address = Console.ReadLine();
+            BodyShop.Addresses = Console.ReadLine();
             Console.WriteLine("Phone Number");
             BodyShop.PhoneNumber = Console.ReadLine();
             Console.WriteLine("Email Address");
@@ -44,7 +45,7 @@ namespace PDR_Jobs
 
         static void PrintTech(Tech tech)
         {
-            Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.profilePage.Description}");
+            Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
         }
     }
-}
+}   

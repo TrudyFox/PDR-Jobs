@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class damages
+    class Damage
     {
-        public String hailSize;
+        public String HailSize;
         public String LotSize;
-        public String numberTotaled;
+        public int NumberTotaled;
         public String PhotoFile;
 
     }

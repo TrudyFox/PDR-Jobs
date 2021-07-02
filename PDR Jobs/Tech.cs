@@ -12,7 +12,7 @@ namespace PDR_Jobs
         public String LastName;
         public Address Address;
         public String Phone;
-        public String email;
-        public ProfilePage profilePage;
+        public String Email;
+        public ProfilePage ProfilePage;
     }
 }
