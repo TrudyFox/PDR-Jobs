@@ -19,7 +19,7 @@ namespace PDR_Jobs
             Console.WriteLine("Phone number");
             tech.Phone = Console.ReadLine();
             Console.WriteLine("Email");
-            tech.email = Console.ReadLine();
+            tech.Email = Console.ReadLine();
              
             //  Profile page?
 
@@ -31,9 +31,6 @@ namespace PDR_Jobs
             var BodyShop = new BodyShop();
             Console.WriteLine("Body shop name");
             BodyShop.Name = Console.ReadLine();
-            var Address = new Address();
-            Console.WriteLine("Address");
-            BodyShop.Addresses = Console.ReadLine();
             Console.WriteLine("Phone Number");
             BodyShop.PhoneNumber = Console.ReadLine();
             Console.WriteLine("Email Address");
@@ -41,6 +38,16 @@ namespace PDR_Jobs
 
             return BodyShop;
 
+        }
+
+        static Address InputAddressData()
+        {
+      
+            var Address = new Address();
+            Console.WriteLine("Addresses");
+            Address = Console.ReadLine();
+            
+            return Address;
         }
 
         static void PrintTech(Tech tech)

@@ -13,7 +13,7 @@ namespace PDR_Jobs
         public String PhoneNumber;
         public String EmailAdress;
         public List<Damage> Damages;
-        public float SplitPercentage;
+        public double SplitPercentage;
         public String PhotoFile;
 
     }
