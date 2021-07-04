@@ -10,10 +10,11 @@ namespace PDR_Jobs
         {
             Data dataBase = new Data();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(Data));
-            TextWriter writer = new StreamWriter("test.xml");
-            serializer.Serialize(writer, dataBase);
-
+            var mySerializer = new XmlSerializer(typeof(Data));                         //this just loads the data into the database object
+            using (var myFileStream = new FileStream("test.xml", FileMode.Open))        //this just loads the data into the database object
+            {                                                                          
+                dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
+            }
 
 
             //welcomt to the pdr
@@ -25,9 +26,26 @@ namespace PDR_Jobs
             //call ui method to get user input for bodyshopdata
 
 
-            BodyShop newBodyShop = InputBodyShopData();
+            //some business logic:
+            Console.WriteLine("please enter a name of a bodyshop to see if it exists in our database");
+            string userInput = Console.ReadLine();
 
-            dataBase.bodyShops.Add(newBodyShop);
+            if(DoesShopWithNameExist(dataBase,userInput))
+            {
+                Console.WriteLine("This shop is in the database");
+            }
+            else
+            {
+                Console.WriteLine("This shop is not in the database");
+            }
+ 
+
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
+            TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
+            serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
+
+
 
            //if selection = 3
               //ui method that asks user for the state
@@ -49,10 +67,22 @@ namespace PDR_Jobs
             tech.Phone = Console.ReadLine();
             Console.WriteLine("Email");
             tech.Email = Console.ReadLine();
-             
+            
             //  Profile page?
 
             return tech;
+        }
+
+        static bool DoesShopWithNameExist(Data db, string theNameToLookFor)
+        {
+            bool doesExist = false;
+            foreach (BodyShop shop in db.bodyShops)
+            {
+                if (shop.Name == theNameToLookFor)
+                    doesExist = true;
+            }
+
+            return doesExist;
         }
 
         static BodyShop InputBodyShopData()
@@ -64,6 +94,8 @@ namespace PDR_Jobs
             BodyShop.PhoneNumber = Console.ReadLine();
             Console.WriteLine("Email Address");
             BodyShop.EmailAddress = Console.ReadLine();
+            Console.WriteLine("Split percentage");
+            BodyShop.SplitPercentage = 0; //parsr from string :P 
 
             return BodyShop;
 
@@ -81,9 +113,14 @@ namespace PDR_Jobs
             return Address;
         }
 
-        static void PrintTech(Tech tech)
+        static void PrintTechInfo(Tech tech)
         {
             Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
+        }
+
+        static void PrintBodyShopInfo(BodyShop bodyShop)
+        {
+            //you implement that ! :)
         }
     }
 }   

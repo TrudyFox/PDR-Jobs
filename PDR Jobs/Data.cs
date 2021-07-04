@@ -12,9 +12,9 @@ namespace PDR_Jobs
     
     public class Data
     {
-        public List<BodyShop> bodyShops;
-        public List<Tech> techs;
-        public List<StormEvent> stormEvents;
+        public List<BodyShop> bodyShops = new List<BodyShop>();
+        public List<Tech> techs = new List<Tech>();
+        public List<StormEvent> stormEvents = new List<StormEvent>();
 
     }
 }
