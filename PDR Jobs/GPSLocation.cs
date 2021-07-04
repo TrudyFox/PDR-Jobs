@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class GPSLocation
+    public class GPSLocation
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class BodyShop
+    public class BodyShop
     {
         public String Name;
         public Address Address;

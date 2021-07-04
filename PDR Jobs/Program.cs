@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace PDR_Jobs
 {
@@ -6,8 +8,32 @@ namespace PDR_Jobs
     {
         static void Main(string[] args)
         {
+            Data dataBase = new Data();
 
-            BodyShop testBodyShop = InputBodyShopData();
+            XmlSerializer serializer = new XmlSerializer(typeof(Data));
+            TextWriter writer = new StreamWriter("test.xml");
+            serializer.Serialize(writer, dataBase);
+
+
+
+            //welcomt to the pdr
+            //options 1 to enter bodyshop
+            //2 to enter tech details
+            //3 to search for bodyshop by state
+
+            //if selection = 1:
+            //call ui method to get user input for bodyshopdata
+
+
+            BodyShop newBodyShop = InputBodyShopData();
+
+            dataBase.bodyShops.Add(newBodyShop);
+
+           //if selection = 3
+              //ui method that asks user for the state
+              //businesss logic that searches
+              //ui method to display the information
+
         }
 
         static Tech InputTechData()

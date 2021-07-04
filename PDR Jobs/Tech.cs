@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class Tech
+    public class Tech
     {
         public String FirstName;
         public String LastName;

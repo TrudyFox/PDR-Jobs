@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class Damage
+    public class Damage
     {
         public double HailSize;
         public int LotSize;

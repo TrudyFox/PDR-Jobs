@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    class StormEvent
+    public  class StormEvent
     {
-        int Severity;
-        DateTime Date;
-        GPSLocation GPSLocation;
+        public int Severity;
+        public DateTime Date;
+        public GPSLocation GPSLocation;
 
     }
 }

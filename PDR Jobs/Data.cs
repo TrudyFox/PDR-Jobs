@@ -9,7 +9,8 @@ namespace PDR_Jobs
     /// <summary>
     /// Responsible for storing and loading data
     /// </summary>
-    class Data
+    
+    public class Data
     {
         public List<BodyShop> bodyShops;
         public List<Tech> techs;
