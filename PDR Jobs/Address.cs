@@ -12,7 +12,7 @@ namespace PDR_Jobs
         public String StreetName;
         public String City;
         public String State;
-        public String ZipCode;
+        public int ZipCode;
         public String GoogleMapsLink;
         public GPSLocation GPSLocation;  //can probably be generated automatically via google maps
 

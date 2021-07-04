@@ -9,9 +9,9 @@ namespace PDR_Jobs
     class BodyShop
     {
         public String Name;
-        public Address Addresses;
-        public String PhoneNumber;
-        public String EmailAdress;
+        public Address Address;
+        public String PhoneNumber;             //maybe sperate ContactInfo class?
+        public String EmailAddress;            //maybe sperate ContactInfo class?
         public List<Damage> Damages;
         public double SplitPercentage;
         public String PhotoFile;

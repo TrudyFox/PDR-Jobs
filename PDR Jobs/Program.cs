@@ -5,8 +5,11 @@ namespace PDR_Jobs
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
+
+            BodyShop testBodyShop = InputBodyShopData();
         }
+
         static Tech InputTechData()
         {
             var tech = new Tech();
@@ -15,7 +18,7 @@ namespace PDR_Jobs
             Console.WriteLine("Last name");
             tech.LastName = Console.ReadLine();
             Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
-            tech.Address = Console.ReadLine();
+            tech.Address = InputAddressData();
             Console.WriteLine("Phone number");
             tech.Phone = Console.ReadLine();
             Console.WriteLine("Email");
@@ -34,7 +37,7 @@ namespace PDR_Jobs
             Console.WriteLine("Phone Number");
             BodyShop.PhoneNumber = Console.ReadLine();
             Console.WriteLine("Email Address");
-            BodyShop.EmailAdress = Console.ReadLine();
+            BodyShop.EmailAddress = Console.ReadLine();
 
             return BodyShop;
 
@@ -44,8 +47,10 @@ namespace PDR_Jobs
         {
       
             var Address = new Address();
-            Console.WriteLine("Addresses");
-            Address = Console.ReadLine();
+            Console.WriteLine("City:");
+            Address.City = Console.ReadLine();
+            Console.WriteLine("Street:");
+            Address.StreetName = Console.ReadLine();
             
             return Address;
         }

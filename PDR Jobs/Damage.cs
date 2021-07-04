@@ -8,8 +8,8 @@ namespace PDR_Jobs
 {
     class Damage
     {
-        public String HailSize;
-        public String LotSize;
+        public double HailSize;
+        public int LotSize;
         public int NumberTotaled;
         public String PhotoFile;
 
