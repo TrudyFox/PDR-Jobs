@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace PDR_Jobs
 {
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
@@ -38,8 +38,10 @@ namespace PDR_Jobs
             {
                 Console.WriteLine("This shop is not in the database");
             }
- 
 
+            var test = new BodyShop();
+
+            UI.PrintBodyShopInfo(test);
 
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
             TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
@@ -54,23 +56,9 @@ namespace PDR_Jobs
 
         }
 
-        static Tech InputTechData()
+        static void FindStormEventsNearMe()
         {
-            var tech = new Tech();
-            Console.WriteLine("First name:");
-            tech.FirstName = Console.ReadLine();
-            Console.WriteLine("Last name");
-            tech.LastName = Console.ReadLine();
-            Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
-            tech.Address = InputAddressData();
-            Console.WriteLine("Phone number");
-            tech.Phone = Console.ReadLine();
-            Console.WriteLine("Email");
-            tech.Email = Console.ReadLine();
-            
-            //  Profile page?
-
-            return tech;
+            //TODO: implement
         }
 
         static bool DoesShopWithNameExist(Data db, string theNameToLookFor)
@@ -101,26 +89,8 @@ namespace PDR_Jobs
 
         }
 
-        static Address InputAddressData()
-        {
-      
-            var Address = new Address();
-            Console.WriteLine("City:");
-            Address.City = Console.ReadLine();
-            Console.WriteLine("Street:");
-            Address.StreetName = Console.ReadLine();
-            
-            return Address;
-        }
 
-        static void PrintTechInfo(Tech tech)
-        {
-            Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
-        }
 
-        static void PrintBodyShopInfo(BodyShop bodyShop)
-        {
-            //you implement that ! :)
-        }
+
     }
 }   

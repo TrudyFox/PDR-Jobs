@@ -11,8 +11,7 @@ namespace PDR_Jobs
         public String FirstName;
         public String LastName;
         public Address Address;
-        public String Phone;             //maybe sperate ContactInfo class?
-        public String Email;             //maybe sperate ContactInfo class?
+        public List<Contacts> ContactInfo;
         public ProfilePage ProfilePage;
     }
 }
