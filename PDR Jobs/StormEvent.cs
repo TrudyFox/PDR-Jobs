@@ -12,5 +12,6 @@ namespace PDR_Jobs
         public DateTime Date;
         public GPSLocation GPSLocation;
 
+       
     }
 }
