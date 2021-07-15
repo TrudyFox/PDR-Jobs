@@ -14,9 +14,18 @@ namespace PDR_Jobs
         public String State;
         public int ZipCode;
         public String GoogleMapsLink;
-        public GPSLocation GPSLocation;  //can probably be generated automatically via google maps
+        public GPSLocation GPSLocation;  //can probably be generated automatically via google maps      
 
-        
+        public String GetGoogleMapsLink()
+        {
+            //magic code
+
+            //go to goole api
+            string googleAPIqueryFormat = $"{City} {StreetName} {HouseNumber}";
+            Console.WriteLine($"I'm the Adress Object, and currently doing magic google lookups with this string: {googleAPIqueryFormat}");    //placeholder
+            return "cool google maps link";                                                          //placeholder
+
+        }
 
     }
 }

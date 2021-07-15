@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDR_Jobs
 {
-    public class Contacts
+    public class ContactInfo
     {
         public String PhoneNumer;
         public String Email;

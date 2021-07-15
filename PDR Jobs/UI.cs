@@ -13,6 +13,7 @@ namespace PDR_Jobs
             Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
         }
 
+
         public static void PrintBodyShopInfo(BodyShop bodyShop)
         {
             //you implement that ! :)
@@ -28,9 +29,9 @@ namespace PDR_Jobs
             Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
             tech.Address = InputAddressData();
             Console.WriteLine("Phone number");
-            tech.Phone = Console.ReadLine();
+          //  tech.Phone = Console.ReadLine();
             Console.WriteLine("Email");
-            tech.Email = Console.ReadLine();
+        //    tech.Email = Console.ReadLine();
 
             //  Profile page?
 
@@ -47,6 +48,39 @@ namespace PDR_Jobs
             Address.StreetName = Console.ReadLine();
 
             return Address;
+        }
+
+        public static BodyShop InputBodyShopData()
+        {
+            var BodyShop = new BodyShop();
+            Console.WriteLine("Body shop name");
+            BodyShop.Name = Console.ReadLine();
+            Console.WriteLine("Phone Number");
+            //BodyShop.PhoneNumber = Console.ReadLine();
+            //Console.WriteLine("Email Address");
+            //BodyShop.EmailAddress = Console.ReadLine();
+            BodyShop.Address = UI.InputAddressData();
+            ContactInfo ct = InputContactInfoData();            // one way to do it
+            BodyShop.ContactInfos.Add(ct);                      // one way to do it
+
+            BodyShop.ContactInfos.Add(InputContactInfoData());  //the other way to do it, both does the same in the end
+            Console.WriteLine("Split percentage");
+            BodyShop.SplitPercentage = 0; //parsr from string :P 
+
+            return BodyShop;
+
+        }
+
+        static ContactInfo InputContactInfoData()
+        {
+            var ContactInfo = new ContactInfo();
+            Console.WriteLine("phone number");
+            ContactInfo.PhoneNumer = Console.ReadLine();
+            Console.WriteLine("Email Address");
+            ContactInfo.Email = Console.ReadLine();
+
+            return ContactInfo;
+
         }
     }
 }

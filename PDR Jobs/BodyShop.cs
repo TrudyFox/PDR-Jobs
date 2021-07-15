@@ -10,8 +10,8 @@ namespace PDR_Jobs
     {
         public String Name;
         public Address Address;
-        public List<Contacts> ContactInfo;        //maybe sperate ContactInfo class?
-        public List<Damage> Damages;
+        public List<ContactInfo> ContactInfos = new List<ContactInfo>();        
+        public List<Damage> Damages = new List<Damage>();
         public double SplitPercentage;
         public String PhotoFile;
 

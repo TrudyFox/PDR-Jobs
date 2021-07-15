@@ -41,6 +41,10 @@ namespace PDR_Jobs
 
             var test = new BodyShop();
 
+            test = UI.InputBodyShopData();
+
+            Console.WriteLine("Here's the maps link" + test.Address.GetGoogleMapsLink());
+
             UI.PrintBodyShopInfo(test);
 
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
@@ -73,21 +77,7 @@ namespace PDR_Jobs
             return doesExist;
         }
 
-        static BodyShop InputBodyShopData()
-        {
-            var BodyShop = new BodyShop();
-            Console.WriteLine("Body shop name");
-            BodyShop.Name = Console.ReadLine();
-            Console.WriteLine("Phone Number");
-            BodyShop.PhoneNumber = Console.ReadLine();
-            Console.WriteLine("Email Address");
-            BodyShop.EmailAddress = Console.ReadLine();
-            Console.WriteLine("Split percentage");
-            BodyShop.SplitPercentage = 0; //parsr from string :P 
 
-            return BodyShop;
-
-        }
 
 
 
