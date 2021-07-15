@@ -14,11 +14,6 @@ namespace PDR_Jobs
         }
 
 
-        public static void PrintBodyShopInfo(BodyShop bodyShop)
-        {
-            //you implement that ! :)
-        }
-
         public static Tech InputTechData()
         {
             var tech = new Tech();
@@ -28,10 +23,8 @@ namespace PDR_Jobs
             tech.LastName = Console.ReadLine();
             Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
             tech.Address = InputAddressData();
-            Console.WriteLine("Phone number");
-          //  tech.Phone = Console.ReadLine();
-            Console.WriteLine("Email");
-        //    tech.Email = Console.ReadLine();
+            ContactInfo ct = InputContactInfoData();            
+            tech.ContactInfos.Add(ct);
 
             //  Profile page?
 
@@ -56,9 +49,6 @@ namespace PDR_Jobs
             Console.WriteLine("Body shop name");
             BodyShop.Name = Console.ReadLine();
             Console.WriteLine("Phone Number");
-            //BodyShop.PhoneNumber = Console.ReadLine();
-            //Console.WriteLine("Email Address");
-            //BodyShop.EmailAddress = Console.ReadLine();
             BodyShop.Address = UI.InputAddressData();
             ContactInfo ct = InputContactInfoData();            // one way to do it
             BodyShop.ContactInfos.Add(ct);                      // one way to do it
