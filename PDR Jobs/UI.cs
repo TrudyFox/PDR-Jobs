@@ -12,7 +12,11 @@ namespace PDR_Jobs
         {
             Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
         }
-
+            
+        public static  void printBodyShopInfo (BodyShop bodyShop)
+        {
+            
+        }
 
         public static Tech InputTechData()
         {

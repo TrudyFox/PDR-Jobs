@@ -45,7 +45,7 @@ namespace PDR_Jobs
 
             Console.WriteLine("Here's the maps link" + test.Address.GetGoogleMapsLink());
 
-            UI.InputBodyShopData(test);
+            UI.printBodyShopInfo(test);
 
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
             TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
