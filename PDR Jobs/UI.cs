@@ -15,7 +15,7 @@ namespace PDR_Jobs
             
         public static  void printBodyShopInfo (BodyShop bodyShop)
         {
-            
+            Console.WriteLine($"bodyshop: {bodyShop.Name} {bodyShop.Address} {bodyShop.ContactInfos}");
         }
 
         public static Tech InputTechData()
@@ -39,20 +39,24 @@ namespace PDR_Jobs
         {
 
             var Address = new Address();
-            Console.WriteLine("City:");
-            Address.City = Console.ReadLine();
-            Console.WriteLine("Street:");
-            Address.StreetName = Console.ReadLine();
-
-            return Address;
-        }
+           Console.WriteLine("Address");
+            Console.WriteLine("Street Address");
+            Console.ReadLine();
+            Console.WriteLine("City");
+            Console.ReadLine();
+            Console.WriteLine("State");
+            Console.ReadLine();
+            Console.WriteLine("Zip Code");
+            Console.ReadLine();
+            
+           return Address;
+       }
 
         public static BodyShop InputBodyShopData()
         {
             var BodyShop = new BodyShop();
             Console.WriteLine("Body shop name");
             BodyShop.Name = Console.ReadLine();
-            Console.WriteLine("Phone Number");
             BodyShop.Address = UI.InputAddressData();
             ContactInfo ct = InputContactInfoData();            // one way to do it
             BodyShop.ContactInfos.Add(ct);                      // one way to do it
