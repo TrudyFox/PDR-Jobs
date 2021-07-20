@@ -10,8 +10,8 @@ namespace PDR_Jobs
     {
         public String FirstName;
         public String LastName;
-        public Address Address;
-        public List<ContactInfo> ContactInfos;
-        public ProfilePage ProfilePage;
+        public Address Address = new Address();
+        public List<ContactInfo> ContactInfos = new List<ContactInfo>();
+        public ProfilePage ProfilePage = new ProfilePage();
     }
 }

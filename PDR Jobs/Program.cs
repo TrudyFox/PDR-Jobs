@@ -16,6 +16,29 @@ namespace PDR_Jobs
                 dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
             }
 
+            //test code:
+            //Tech aTech = new Tech();
+
+            //aTech = UI.InputTechData();
+
+            //Console.WriteLine("This is the tech info after entereing it:");
+            //UI.PrintTechInfo(aTech);
+
+            //Console.WriteLine("Now we're at a pint where we want to update this tech's adress");
+
+            //aTech.Address = UI.InputAddressData();
+
+            //Console.WriteLine("This is the thech indo after inputting a new adress");
+
+            //UI.PrintTechInfo(aTech);
+
+            Tech T = UI.InputTechData();
+
+            if(T.Address.State == "Texas")
+            {
+                Console.WriteLine("Sorry no service for you");
+            }
+
 
             //welcomt to the pdr
             //options 1 to enter bodyshop
@@ -27,25 +50,7 @@ namespace PDR_Jobs
 
 
             //some business logic:
-            Console.WriteLine("please enter a name of a bodyshop to see if it exists in our database");
-            string userInput = Console.ReadLine();
 
-            if(DoesShopWithNameExist(dataBase,userInput))
-            {
-                Console.WriteLine("This shop is in the database");
-            }
-            else
-            {
-                Console.WriteLine("This shop is not in the database");
-            }
-
-            var test = new BodyShop();
-
-            test = UI.InputBodyShopData();
-
-            Console.WriteLine("Here's the maps link" + test.Address.GetGoogleMapsLink());
-
-            UI.printBodyShopInfo(test);
 
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
             TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
@@ -60,10 +65,6 @@ namespace PDR_Jobs
 
         }
 
-        static void FindStormEventsNearMe()
-        {
-            //TODO: implement
-        }
 
         static bool DoesShopWithNameExist(Data db, string theNameToLookFor)
         {

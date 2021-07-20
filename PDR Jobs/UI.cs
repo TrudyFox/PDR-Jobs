@@ -8,14 +8,31 @@ namespace PDR_Jobs
 {
     public static class UI
     {
-        public static void PrintTechInfo(Tech tech)
+        public static void PrintTechInfo(Tech t)
         {
-            Console.WriteLine($"tech: {tech.FirstName} {tech.LastName} - {tech.ProfilePage.Description}");
+            Console.WriteLine($"tech: {t.FirstName} {t.LastName}");
+            PrintAddress(t.Address);
+    
+
         }
-            
-        public static  void printBodyShopInfo (BodyShop bodyShop)
+
+        public static void PrintBodyShopInfo(BodyShop bs)
         {
-            Console.WriteLine($"bodyshop: {bodyShop.Name} {bodyShop.Address} {bodyShop.ContactInfos}");
+            Console.WriteLine($"bodyshop: Name:{bs.Name}");
+            PrintAddress(bs.Address);
+            //print contact info
+
+
+        }
+
+        public static void PrintContactInfo(ContactInfo ct)
+        {
+            Console.WriteLine($"Contact: \n\tPhone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
+        }
+
+        public static void PrintAddress(Address ad)
+        {
+            //TODO Implement
         }
 
         public static Tech InputTechData()
@@ -27,7 +44,7 @@ namespace PDR_Jobs
             tech.LastName = Console.ReadLine();
             Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
             tech.Address = InputAddressData();
-            ContactInfo ct = InputContactInfoData();            
+            ContactInfo ct = InputContactInfoData();
             tech.ContactInfos.Add(ct);
 
             //  Profile page?
@@ -37,20 +54,19 @@ namespace PDR_Jobs
 
         public static Address InputAddressData()
         {
-
+          
             var Address = new Address();
-           Console.WriteLine("Address");
-            Console.WriteLine("Street Address");
-            Console.ReadLine();
+            Console.WriteLine("Street Name");
+            Address.StreetName = Console.ReadLine();
             Console.WriteLine("City");
-            Console.ReadLine();
+            Address.City = Console.ReadLine();
             Console.WriteLine("State");
-            Console.ReadLine();
+            Address.State = Console.ReadLine();
             Console.WriteLine("Zip Code");
-            Console.ReadLine();
-            
-           return Address;
-       }
+            Address.ZipCode = Convert.ToInt32(Console.ReadLine());
+
+            return Address;
+        }
 
         public static BodyShop InputBodyShopData()
         {
@@ -58,18 +74,19 @@ namespace PDR_Jobs
             Console.WriteLine("Body shop name");
             BodyShop.Name = Console.ReadLine();
             BodyShop.Address = UI.InputAddressData();
-            ContactInfo ct = InputContactInfoData();            // one way to do it
-            BodyShop.ContactInfos.Add(ct);                      // one way to do it
+            //ContactInfo ct = InputContactInfoData();            // one way to do it
+            //BodyShop.ContactInfos.Add(ct);                      // one way to do it
 
             BodyShop.ContactInfos.Add(InputContactInfoData());  //the other way to do it, both does the same in the end
             Console.WriteLine("Split percentage");
             BodyShop.SplitPercentage = 0; //parsr from string :P 
 
+
             return BodyShop;
 
         }
 
-        static ContactInfo InputContactInfoData()
+        public static ContactInfo InputContactInfoData()
         {
             var ContactInfo = new ContactInfo();
             Console.WriteLine("phone number");
