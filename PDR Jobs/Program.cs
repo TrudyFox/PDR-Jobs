@@ -29,7 +29,7 @@ namespace PDR_Jobs
             //aTech.Address = UI.InputAddressData();
 
             //Console.WriteLine("This is the thech indo after inputting a new adress");
-
+            
             //UI.PrintTechInfo(aTech);
 
             Tech T = UI.InputTechData();
@@ -44,6 +44,7 @@ namespace PDR_Jobs
             //options 1 to enter bodyshop
             //2 to enter tech details
             //3 to search for bodyshop by state
+
 
             //if selection = 1:
             //call ui method to get user input for bodyshopdata

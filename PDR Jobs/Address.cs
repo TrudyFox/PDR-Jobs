@@ -8,8 +8,8 @@ namespace PDR_Jobs
 {
     public class Address
     {
-        public String HouseNumber;
-        public String StreetName;
+       
+        public String StreetAddress;
         public String City;
         public String State;
         public int ZipCode;
@@ -21,7 +21,7 @@ namespace PDR_Jobs
             //magic code
 
             //go to goole api
-            string googleAPIqueryFormat = $"{City} {StreetName} {HouseNumber}";
+            string googleAPIqueryFormat = $"{City} {StreetAddress} ";
             Console.WriteLine($"I'm the Adress Object, and currently doing magic google lookups with this string: {googleAPIqueryFormat}");    //placeholder
             return "cool google maps link";                                                          //placeholder
 

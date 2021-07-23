@@ -10,7 +10,7 @@ namespace PDR_Jobs
     {
         public static void PrintTechInfo(Tech t)
         {
-            Console.WriteLine($"tech: {t.FirstName} {t.LastName}");
+            Console.WriteLine($"tech: FirstName{t.FirstName} \tLastName {t.LastName} ");
             PrintAddress(t.Address);
     
 
@@ -27,12 +27,12 @@ namespace PDR_Jobs
 
         public static void PrintContactInfo(ContactInfo ct)
         {
-            Console.WriteLine($"Contact: \n\tPhone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
+            Console.WriteLine($"Contact: Phone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
         }
 
         public static void PrintAddress(Address ad)
         {
-            //TODO Implement
+            Console.WriteLine($"Address: Street{ad.StreetAddress} \n\tCity{ad.City} \n\tState{ad.State} \tZip{ad.ZipCode}");  
         }
 
         public static Tech InputTechData()
@@ -57,7 +57,7 @@ namespace PDR_Jobs
           
             var Address = new Address();
             Console.WriteLine("Street Name");
-            Address.StreetName = Console.ReadLine();
+            Address.StreetAddress = Console.ReadLine();
             Console.WriteLine("City");
             Address.City = Console.ReadLine();
             Console.WriteLine("State");
