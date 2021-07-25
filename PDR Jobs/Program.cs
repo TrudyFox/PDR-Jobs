@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace PDR_Jobs
 {
-   public class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -12,7 +12,7 @@ namespace PDR_Jobs
 
             var mySerializer = new XmlSerializer(typeof(Data));                         //this just loads the data into the database object
             using (var myFileStream = new FileStream("test.xml", FileMode.Open))        //this just loads the data into the database object
-            {                                                                          
+            {
                 dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
             }
 
@@ -29,15 +29,39 @@ namespace PDR_Jobs
             //aTech.Address = UI.InputAddressData();
 
             //Console.WriteLine("This is the thech indo after inputting a new adress");
-            
+
             //UI.PrintTechInfo(aTech);
 
-            Tech T = UI.InputTechData();
+            //Tech T = UI.InputTechData();
 
-            if(T.Address.State == "Texas")
+            //dataBase.techs.Add(T);
+            //   UI.PrintTechInfo(T);
+
+            //print all techs names:
+            Console.WriteLine($"We have {dataBase.techs.Count} Techs in the database");
+
+            foreach(Tech t in dataBase.techs)
             {
-                Console.WriteLine("Sorry no service for you");
+                if(t.FirstName == "joe")
+                {
+                    Console.WriteLine("We found joe!, here are his details:");
+                    UI.PrintTechInfo(t);
+
+                    t.ContactInfos.Add(UI.InputContactInfoData());
+                }
             }
+
+            foreach (Tech t in dataBase.techs)
+            {
+                Console.WriteLine($"{t.FirstName} { t.LastName}");
+            }
+
+            //if(T.Address.State == "Texas")
+            //{
+            //    Console.WriteLine("Sorry no service for you");
+            //}
+
+           // dataBase.techs.Add(T);
 
 
             //welcomt to the pdr
@@ -59,10 +83,10 @@ namespace PDR_Jobs
 
 
 
-           //if selection = 3
-              //ui method that asks user for the state
-              //businesss logic that searches
-              //ui method to display the information
+            //if selection = 3
+            //ui method that asks user for the state
+            //businesss logic that searches
+            //ui method to display the information
 
         }
 
@@ -85,4 +109,4 @@ namespace PDR_Jobs
 
 
     }
-}   
+}

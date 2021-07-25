@@ -10,8 +10,8 @@ namespace PDR_Jobs
     {
         public static void PrintTechInfo(Tech t)
         {
-            Console.WriteLine($"tech: FirstName{t.FirstName} \tLastName {t.LastName}  ");
-            PrintAddress(t.Address);
+            Console.WriteLine($"\ntech: \n\tFirst Name: {t.FirstName} \tLast Name: {t.LastName}  ");
+            PrintAddress (t.Address);
             foreach (ContactInfo C in t.ContactInfos)
             {
                 PrintContactInfo(C);
@@ -21,19 +21,19 @@ namespace PDR_Jobs
 
         public static void PrintBodyShopInfo(BodyShop bs)
         {
-            Console.WriteLine($"bodyshop: Name:{bs.Name}");
-            PrintAddress(bs.Address);
+            Console.WriteLine($"bodyshop: Name: {bs.Name}");
+            PrintAddress (bs.Address);
            //TODO: PrintContactInfo(bs.ContactInfos);
         }
 
         public static void PrintContactInfo(ContactInfo ct)
         {
-            Console.WriteLine($"Contact: Phone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
+            Console.WriteLine($"\nContact: Phone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
         }
 
         public static void PrintAddress(Address ad)
         {
-            Console.WriteLine($"Address: Street{ad.StreetAddress} \n\tCity{ad.City} \n\tState{ad.State} \tZip{ad.ZipCode}");
+            Console.WriteLine($"\tStreet Address: {ad.StreetAddress} \n\tCity: {ad.City} \n\tState: {ad.State} \tZip: {ad.ZipCode}");
 
         }
 
