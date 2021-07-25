@@ -23,7 +23,10 @@ namespace PDR_Jobs
         {
             Console.WriteLine($"bodyshop: Name: {bs.Name}");
             PrintAddress (bs.Address);
-           //TODO: PrintContactInfo(bs.ContactInfos);
+            foreach (ContactInfo C in bs.ContactInfos)
+            {
+                PrintContactInfo(C);
+            }
         }
 
         public static void PrintContactInfo(ContactInfo ct)
