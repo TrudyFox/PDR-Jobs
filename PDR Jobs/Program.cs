@@ -17,9 +17,7 @@ namespace PDR_Jobs
             }
 
             //test code:
-            //Tech aTech = new Tech();
-
-            //aTech = UI.InputTechData();
+           
 
             //Console.WriteLine("This is the tech info after entereing it:");
             //UI.PrintTechInfo(aTech);
@@ -61,10 +59,24 @@ namespace PDR_Jobs
             //    Console.WriteLine("Sorry no service for you");
             //}
 
-           // dataBase.techs.Add(T);
+            // dataBase.techs.Add(T);
 
 
-            //welcomt to the pdr
+            Console.WriteLine("PDR JOBS");
+            
+            Console.WriteLine("If you are a Tech enter 1");
+            Console.WriteLine("If you are a bodyshop enter 2");
+            Console.WriteLine("To search for a bodyshop by state enter 3");
+
+
+            int userinput = int.Parse(Console.ReadLine());
+            if (userinput == 1)
+            {
+                Tech aTech = new Tech();
+
+                aTech = UI.InputTechData();
+            }
+
             //options 1 to enter bodyshop
             //2 to enter tech details
             //3 to search for bodyshop by state
