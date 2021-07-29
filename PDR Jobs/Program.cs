@@ -17,7 +17,7 @@ namespace PDR_Jobs
             }
 
             //test code:
-           
+
 
             //Console.WriteLine("This is the tech info after entereing it:");
             //UI.PrintTechInfo(aTech);
@@ -38,9 +38,9 @@ namespace PDR_Jobs
             //print all techs names:
             Console.WriteLine($"We have {dataBase.techs.Count} Techs in the database");
 
-            foreach(Tech t in dataBase.techs)
+            foreach (Tech t in dataBase.techs)
             {
-                if(t.FirstName == "joe")
+                if (t.FirstName == "joe")
                 {
                     Console.WriteLine("We found joe!, here are his details:");
                     UI.PrintTechInfo(t);
@@ -63,19 +63,32 @@ namespace PDR_Jobs
 
 
             Console.WriteLine("PDR JOBS");
-            
+
             Console.WriteLine("If you are a Tech enter 1");
             Console.WriteLine("If you are a bodyshop enter 2");
             Console.WriteLine("To search for a bodyshop by state enter 3");
 
-
-            int userinput = int.Parse(Console.ReadLine());
-            if (userinput == 1)
             {
-                Tech aTech = new Tech();
+                int userinput = int.Parse(Console.ReadLine());
 
-                aTech = UI.InputTechData();
+
+                switch (1)
+                {
+                    case 1:
+                            Tech aTech = new Tech();
+                        aTech = UI.InputTechData();
+                        break;
+                            
+                    case 2:
+
+
+
+                }
+
+
+
             }
+
 
             //options 1 to enter bodyshop
             //2 to enter tech details
