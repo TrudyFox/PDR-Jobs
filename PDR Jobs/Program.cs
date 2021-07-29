@@ -80,6 +80,12 @@ namespace PDR_Jobs
                         break;
                             
                     case 2:
+                        BodyShop aBodyShop = new BodyShop();
+                        aBodyShop = UI.InputBodyShopData();
+                        break;
+
+                    case 3:
+
 
 
 
