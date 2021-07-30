@@ -64,9 +64,10 @@ namespace PDR_Jobs
 
             Console.WriteLine("PDR JOBS");
 
-            Console.WriteLine("If you are a Tech enter 1");
-            Console.WriteLine("If you are a bodyshop enter 2");
-            Console.WriteLine("To search for a bodyshop by state enter 3");
+            Console.WriteLine("If you are a bodyshop enter 1");
+            Console.WriteLine("If you are a tech enter 2");
+            Console.WriteLine("To list all techs enter 3");
+            Console.WriteLine("To search for a bodyshop by state enter 4");
 
             {
                 int userinput = int.Parse(Console.ReadLine());
@@ -75,16 +76,17 @@ namespace PDR_Jobs
                 switch (1)
                 {
                     case 1:
-                            Tech aTech = new Tech();
-                        aTech = UI.InputTechData();
-                        break;
-                            
-                    case 2:
                         BodyShop aBodyShop = new BodyShop();
                         aBodyShop = UI.InputBodyShopData();
                         break;
 
+                    case 2:
+                        Tech aTech = new Tech();
+                        aTech = UI.InputTechData();
+                        break;
+
                     case 3:
+
 
 
 
