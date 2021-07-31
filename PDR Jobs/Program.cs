@@ -36,30 +36,25 @@ namespace PDR_Jobs
             //   UI.PrintTechInfo(T);
 
             //print all techs names:
-            Console.WriteLine($"We have {dataBase.techs.Count} Techs in the database");
 
-            foreach (Tech t in dataBase.techs)
-            {
-                if (t.FirstName == "joe")
-                {
-                    Console.WriteLine("We found joe!, here are his details:");
-                    UI.PrintTechInfo(t);
-
-                    t.ContactInfos.Add(UI.InputContactInfoData());
-                }
-            }
-
-            foreach (Tech t in dataBase.techs)
-            {
-                Console.WriteLine($"{t.FirstName} { t.LastName}");
-            }
-
-            //if(T.Address.State == "Texas")
+            //foreach (Tech t in dataBase.techs)
             //{
-            //    Console.WriteLine("Sorry no service for you");
+            //    if (t.FirstName == "joe")
+            //    {
+            //        Console.WriteLine("We found joe!, here are his details:");
+            //        UI.PrintTechInfo(t);
+
+            //        t.ContactInfos.Add(UI.InputContactInfoData());
+            //    }
             //}
 
-            // dataBase.techs.Add(T);
+                        //if (T.Address.State == "Texas")
+                        //{
+                        //    Console.WriteLine("Sorry no service for you");
+                        //}
+
+                        //dataBase.techs.Add(T);
+
 
 
             Console.WriteLine("PDR JOBS");
@@ -88,8 +83,12 @@ namespace PDR_Jobs
                         break;
 
                     case 3:
-
-
+                        Console.WriteLine($"We have {dataBase.techs.Count} Techs in the database");
+                        foreach (Tech t in dataBase.techs)
+                        {
+                            Console.WriteLine($"{t.FirstName} { t.LastName}");
+                        }
+                    case 4:
 
 
 
