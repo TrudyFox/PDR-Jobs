@@ -78,11 +78,13 @@ namespace PDR_Jobs
                     case 1:
                         BodyShop aBodyShop = new BodyShop();
                         aBodyShop = UI.InputBodyShopData();
+                        dataBase.bodyShops.Add(aBodyShop);
                         break;
 
                     case 2:
                         Tech aTech = new Tech();
                         aTech = UI.InputTechData();
+                        dataBase.techs.Add(aTech);
                         break;
 
                     case 3:
