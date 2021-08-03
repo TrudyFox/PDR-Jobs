@@ -15,5 +15,9 @@ namespace PDR_Jobs
         public double SplitPercentage;
         public String PhotoFile;
 
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

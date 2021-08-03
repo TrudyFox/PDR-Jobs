@@ -68,7 +68,7 @@ namespace PDR_Jobs
                 int userinput = int.Parse(Console.ReadLine());
 
 
-                switch (1)
+                switch (userinput)
                 {
                     case 1:
                         BodyShop aBodyShop = new BodyShop();
@@ -88,8 +88,16 @@ namespace PDR_Jobs
                         {
                             Console.WriteLine($"{t.FirstName} { t.LastName}");
                         }
-                    case 4:
+                        break;
 
+                    case 4:
+                        string stateInput = Console.ReadLine();
+                        foreach ( BodyShop bs in dataBase.bodyShops )
+                        {
+                            if (bs.Address.State == stateInput)
+                            Console.WriteLine($"bs.name");
+                        }
+                        break;
 
 
                 }
