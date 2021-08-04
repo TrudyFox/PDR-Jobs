@@ -61,7 +61,7 @@ namespace PDR_Jobs
         {
 
             var Address = new Address();
-            Console.WriteLine("Street Name");
+            Console.WriteLine("Street Address");
             Address.StreetAddress = Console.ReadLine();
             Console.WriteLine("City");
             Address.City = Console.ReadLine();
@@ -83,8 +83,8 @@ namespace PDR_Jobs
             //BodyShop.ContactInfos.Add(ct);                      // one way to do it
 
             BodyShop.ContactInfos.Add(InputContactInfoData());  //the other way to do it, both does the same in the end
-            Console.WriteLine("Split percentage");
-            BodyShop.SplitPercentage = 0; //parsr from string :P 
+            //Console.WriteLine("Split percentage");
+            //BodyShop.SplitPercentage = 0; //parsr from string :P 
 
 
             return BodyShop;
