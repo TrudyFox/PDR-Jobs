@@ -95,7 +95,7 @@ namespace PDR_Jobs
                         foreach ( BodyShop bs in dataBase.bodyShops )
                         {
                             if (bs.Address.State == stateInput)
-                            Console.WriteLine($"bs.name");
+                            Console.WriteLine($"{bs.Name}");
                         }
                         break;
 
