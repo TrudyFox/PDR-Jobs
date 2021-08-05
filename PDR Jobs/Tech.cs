@@ -13,5 +13,11 @@ namespace PDR_Jobs
         public Address Address = new Address();
         public List<ContactInfo> ContactInfos = new List<ContactInfo>();
         public ProfilePage ProfilePage = new ProfilePage();
+
+    public override string ToString()
+    {
+            return $"{FirstName} {LastName}";
+          
+    }
     }
 }

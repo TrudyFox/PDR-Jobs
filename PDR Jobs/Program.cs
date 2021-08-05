@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -16,46 +18,6 @@ namespace PDR_Jobs
                 dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
             }
 
-            //test code:
-
-
-            //Console.WriteLine("This is the tech info after entereing it:");
-            //UI.PrintTechInfo(aTech);
-
-            //Console.WriteLine("Now we're at a pint where we want to update this tech's adress");
-
-            //aTech.Address = UI.InputAddressData();
-
-            //Console.WriteLine("This is the thech indo after inputting a new adress");
-
-            //UI.PrintTechInfo(aTech);
-
-            //Tech T = UI.InputTechData();
-
-            //dataBase.techs.Add(T);
-            //   UI.PrintTechInfo(T);
-
-            //print all techs names:
-
-            //foreach (Tech t in dataBase.techs)
-            //{
-            //    if (t.FirstName == "joe")
-            //    {
-            //        Console.WriteLine("We found joe!, here are his details:");
-            //        UI.PrintTechInfo(t);
-
-            //        t.ContactInfos.Add(UI.InputContactInfoData());
-            //    }
-            //}
-
-                        //if (T.Address.State == "Texas")
-                        //{
-                        //    Console.WriteLine("Sorry no service for you");
-                        //}
-
-                        //dataBase.techs.Add(T);
-
-
 
             Console.WriteLine("PDR JOBS");
 
@@ -63,6 +25,8 @@ namespace PDR_Jobs
             Console.WriteLine("If you are a tech enter 2");
             Console.WriteLine("To list all techs enter 3");
             Console.WriteLine("To search for a bodyshop by state enter 4");
+            Console.WriteLine("To search for a tech by name enter 5");
+
 
             {
                 int userinput = int.Parse(Console.ReadLine());
@@ -92,16 +56,62 @@ namespace PDR_Jobs
 
                     case 4:
                         string stateInput = Console.ReadLine();
-                        foreach ( BodyShop bs in dataBase.bodyShops )
+                        foreach (BodyShop bs in dataBase.bodyShops)
                         {
                             if (bs.Address.State == stateInput)
-                            Console.WriteLine($"{bs.Name}");
+                                Console.WriteLine($"{bs.Name}");
                         }
                         break;
 
-
+                    case 5:
+                        string SearchTech = Console.ReadLine();
+                        foreach (Tech tech in dataBase.techs)
+                        {
+                            if (tech.FirstName == SearchTech)
+                                Console.WriteLine($"{tech}");
+                        }
+                        break;
                 }
 
+
+                //test code:
+
+
+                //Console.WriteLine("This is the tech info after entereing it:");
+                //UI.PrintTechInfo(aTech);
+
+                //Console.WriteLine("Now we're at a pint where we want to update this tech's adress");
+
+                //aTech.Address = UI.InputAddressData();
+
+                //Console.WriteLine("This is the thech indo after inputting a new adress");
+
+                //UI.PrintTechInfo(aTech);
+
+                Tech T = UI.InputTechData();
+
+                dataBase.techs.Add(T);
+                UI.PrintTechInfo(T);
+
+                //print all techs names:
+
+                foreach (Tech t in dataBase.techs)
+                {
+                    if (t.FirstName == "joe")
+                    {
+                        Console.WriteLine("We found joe!, here are his details:");
+                        UI.PrintTechInfo(t);
+
+                        t.ContactInfos.Add(UI.InputContactInfoData());
+                    }
+                }
+
+                if (T.Address.State == "Texas")
+                {
+                    Console.WriteLine("Sorry no service for you");
+                }
+
+                dataBase.techs.Add(T);
 
 
             }
