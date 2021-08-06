@@ -14,6 +14,7 @@ namespace PDR_Jobs
         public List<Damage> Damages = new List<Damage>(); 
         public double SplitPercentage;
         public String PhotoFile;
+        public String HomePage; 
 
         public override string ToString()
         {

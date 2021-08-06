@@ -68,7 +68,7 @@ namespace PDR_Jobs
                         foreach (Tech tech in dataBase.techs)
                         {
                             if (tech.FirstName == SearchTech)
-                                Console.WriteLine($"{tech}");
+                            UI.PrintTechInfo(tech);
                         }
                         break;
                 }
