@@ -16,6 +16,11 @@ namespace PDR_Jobs
         public String GoogleMapsLink;
         public GPSLocation GPSLocation;  //can probably be generated automatically via google maps      
 
+        public override string ToString()
+        {
+            return $"{StreetAddress} {City} {State} {ZipCode}";
+        }
+
         public String GetGoogleMapsLink()
         {
             //magic code
