@@ -14,10 +14,18 @@ namespace PDR_Jobs
         public List<ContactInfo> ContactInfos = new List<ContactInfo>();
         public ProfilePage ProfilePage = new ProfilePage();
 
-    public override string ToString()
-    {
+        public String FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
+
+        public override string ToString()
+        {
             return $"{FirstName} {LastName}";
-          
-    }
+        }
     }
 }

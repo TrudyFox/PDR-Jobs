@@ -13,5 +13,7 @@ namespace PDR_Jobs
         public int NumberTotaled;
         public String PhotoFile;
 
+
+
     }
 }

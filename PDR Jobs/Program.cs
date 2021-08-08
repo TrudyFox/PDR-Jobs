@@ -27,6 +27,13 @@ namespace PDR_Jobs
             Console.WriteLine("To search for a bodyshop by state enter 4");
             Console.WriteLine("To search for a tech by name enter 5");
 
+            //case 6 partial search => .Contains() https://docs.microsoft.com/en-us/dotnet/api/system.string.contains?view=net-5.0
+
+            //case 7: add new damage to bodyshop
+            //selecting one specific bodyshop (by searching by name, or by displaying them all and selecting by number)
+            // foundbodyshop variable
+            // foundbodyshop.damages.add(UI.InputDamage())
+
 
             {
                 int userinput = int.Parse(Console.ReadLine());
@@ -67,8 +74,8 @@ namespace PDR_Jobs
                         string SearchTech = Console.ReadLine();
                         foreach (Tech tech in dataBase.techs)
                         {
-                            if (tech.FirstName == SearchTech)
-                            UI.PrintTechInfo(tech);
+                            if (tech.FullName == SearchTech)
+                                UI.PrintTechInfo(tech);
                         }
                         break;
                 }
