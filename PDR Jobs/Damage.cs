@@ -12,6 +12,7 @@ namespace PDR_Jobs
         public int LotSize;
         public int NumberTotaled;
         public String PhotoFile;
+        public double SplitPercentage;
 
 
 

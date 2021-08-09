@@ -25,7 +25,8 @@ namespace PDR_Jobs
             Console.WriteLine("If you are a tech enter 2");
             Console.WriteLine("To list all techs enter 3");
             Console.WriteLine("To search for a bodyshop by state enter 4");
-            Console.WriteLine("To search for a tech by name enter 5");
+            Console.WriteLine("Tos search for a bodyshop by name enter 5");
+            Console.WriteLine("To search for a tech by name enter 6");
 
             //case 6 partial search => .Contains() https://docs.microsoft.com/en-us/dotnet/api/system.string.contains?view=net-5.0
 
@@ -66,8 +67,8 @@ namespace PDR_Jobs
                         foreach (BodyShop bs in dataBase.bodyShops)
                         {
                             if (bs.Address.State == stateInput)
-                                Console.WriteLine($"{bs.Name}");
-                        }
+                                Console.WriteLine($"{bs.Name}");               
+                       }
                         break;
 
                     case 5:

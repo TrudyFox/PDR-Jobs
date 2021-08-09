@@ -11,8 +11,7 @@ namespace PDR_Jobs
         public String Name;
         public Address Address;
         public List<ContactInfo> ContactInfos = new List<ContactInfo>();        
-        public List<Damage> Damages = new List<Damage>(); 
-        public double SplitPercentage;
+        public List<Damage> Damages = new List<Damage>();
         public String PhotoFile;
         public String HomePage; 
 
