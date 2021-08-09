@@ -72,6 +72,15 @@ namespace PDR_Jobs
                         break;
 
                     case 5:
+                        string SearchBS = Console.ReadLine();
+                        foreach (BodyShop bodyshop in dataBase.bodyShops)
+                        {
+                            if (bodyshop.Name == SearchBS) 
+                            UI.PrintBodyShopInfo(bodyshop);
+                        }
+                        break;
+
+                    case 6:
                         string SearchTech = Console.ReadLine();
                         foreach (Tech tech in dataBase.techs)
                         {
@@ -79,6 +88,8 @@ namespace PDR_Jobs
                                 UI.PrintTechInfo(tech);
                         }
                         break;
+                       
+
                 }
 
 
