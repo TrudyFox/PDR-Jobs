@@ -14,7 +14,10 @@ namespace PDR_Jobs
         public String PhotoFile;
         public double SplitPercentage;
 
-
+        public override string ToString()
+        {
+            return $"{ HailSize} {LotSize} ";
+        }
 
     }
 }

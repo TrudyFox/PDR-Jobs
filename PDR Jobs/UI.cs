@@ -11,7 +11,7 @@ namespace PDR_Jobs
         public static void PrintTechInfo(Tech t)
         {
             Console.WriteLine($"\ntech: \n\tFirst Name: {t.FirstName} \tLast Name: {t.LastName}  ");
-            PrintAddress (t.Address);
+            PrintAddress(t.Address);
             foreach (ContactInfo C in t.ContactInfos)
             {
                 PrintContactInfo(C);
@@ -22,7 +22,7 @@ namespace PDR_Jobs
         public static void PrintBodyShopInfo(BodyShop bs)
         {
             Console.WriteLine($"bodyshop: Name: {bs.Name}");
-            PrintAddress (bs.Address);
+            PrintAddress(bs.Address);
             foreach (ContactInfo C in bs.ContactInfos)
             {
                 PrintContactInfo(C);
@@ -100,6 +100,24 @@ namespace PDR_Jobs
             ContactInfo.Email = Console.ReadLine();
 
             return ContactInfo;
+
+        }
+
+        public static Damage InputDamageInfo()
+        {
+            var Damage = new Damage();
+            Console.WriteLine("Hail Size");
+            Damage.HailSize = int.Parse (Console.ReadLine());
+            Console.WriteLine("Lot Size");
+            Damage.LotSize = int.Parse(Console.ReadLine());
+            Console.WriteLine("Number of totaled vehicles");
+            Damage.NumberTotaled = int.Parse(Console.ReadLine());
+            //Console.WriteLine("photo file")
+            //Damage.PhotoFile = Console.ReadLine();
+            Console.WriteLine("what percent will you be paying the tech");
+            Damage.SplitPercentage = int.Parse(Console.ReadLine());
+
+            return Damage;
 
         }
     }
