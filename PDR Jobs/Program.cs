@@ -98,7 +98,8 @@ namespace PDR_Jobs
                             if (bodyshop.Name.Contains(SBS))
                                 UI.PrintBodyShopInfo(bodyshop);
                             var foundBodyShop = bodyshop;
-                           // foundBodyShop = bodyshop.Damages.Add(UI.InputDamageInfo);
+                            foundBodyShop.Damages.Add(UI.InputDamageInfo());
+                             
                                
                         }
 

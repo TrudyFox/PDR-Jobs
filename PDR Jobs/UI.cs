@@ -106,16 +106,16 @@ namespace PDR_Jobs
         public static Damage InputDamageInfo()
         {
             var Damage = new Damage();
-            Console.WriteLine("Hail Size");
+            Console.WriteLine("Aproximate hail size in inches");
             Damage.HailSize = int.Parse (Console.ReadLine());
-            Console.WriteLine("Lot Size");
+            Console.WriteLine("Aproximate lot Size");
             Damage.LotSize = int.Parse(Console.ReadLine());
             Console.WriteLine("Number of totaled vehicles");
             Damage.NumberTotaled = int.Parse(Console.ReadLine());
             //Console.WriteLine("photo file")
             //Damage.PhotoFile = Console.ReadLine();
             Console.WriteLine("what percent will you be paying the tech");
-            Damage.SplitPercentage = int.Parse(Console.ReadLine());
+            Damage.SplitPercentage = double.Parse(Console.ReadLine());
 
             return Damage;
 
