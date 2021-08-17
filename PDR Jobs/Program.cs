@@ -60,12 +60,12 @@ namespace PDR_Jobs
                             Console.WriteLine($"{t.FirstName} { t.LastName}");
                         }
                         break;
-
+                        
                     case 4:
                         string stateInput = Console.ReadLine();
                         foreach (BodyShop bs in dataBase.bodyShops)
                         {
-                            if (bs.Address.State == stateInput)
+                            if (bs.Address.State.ToUpper() == stateInput)
                                 Console.WriteLine($"{bs.Name}");               
                        }
                         break;
@@ -75,7 +75,7 @@ namespace PDR_Jobs
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
 
                         {
-                            if (bodyshop.Name.Contains(SearchBS))
+                            if (bodyshop.Name.ToUpper().Contains(SearchBS.ToUpper()))
                                 UI.PrintBodyShopInfo(bodyshop);
                         }
                         break;
@@ -84,7 +84,7 @@ namespace PDR_Jobs
                         string SearchTech = Console.ReadLine();
                         foreach (Tech tech in dataBase.techs)
                         {
-                            if (tech.FullName.Contains(SearchTech))
+                            if (tech.FullName.ToUpper().Contains(SearchTech))
                                 UI.PrintTechInfo(tech);
                         }
                         break;
@@ -95,14 +95,11 @@ namespace PDR_Jobs
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
 
                         {
-                            if (bodyshop.Name.Contains(SBS))
+                            if (bodyshop.Name.ToUpper().Contains(SBS))
                                 UI.PrintBodyShopInfo(bodyshop);
                             var foundBodyShop = bodyshop;
-                            foundBodyShop.Damages.Add(UI.InputDamageInfo());
-                             
-                               
+                            foundBodyShop.Damages.Add(UI.InputDamageInfo());    
                         }
-
                         break;
                 }
 

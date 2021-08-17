@@ -112,8 +112,9 @@ namespace PDR_Jobs
             Damage.LotSize = int.Parse(Console.ReadLine());
             Console.WriteLine("Number of totaled vehicles");
             Damage.NumberTotaled = int.Parse(Console.ReadLine());
-            //Console.WriteLine("photo file")
-            //Damage.PhotoFile = Console.ReadLine();
+            Console.WriteLine("photo file");
+
+            Damage.PhotoFile = Console.ReadLine();
             Console.WriteLine("what percent will you be paying the tech");
             Damage.SplitPercentage = double.Parse(Console.ReadLine());
 
