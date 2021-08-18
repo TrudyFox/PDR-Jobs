@@ -65,7 +65,7 @@ namespace PDR_Jobs
                         string stateInput = Console.ReadLine();
                         foreach (BodyShop bs in dataBase.bodyShops)
                         {
-                            if (bs.Address.State.ToUpper() == stateInput)
+                            if (bs.Address.State.ToUpper().Contains(stateInput.ToUpper()))
                                 Console.WriteLine($"{bs.Name}");               
                        }
                         break;
@@ -84,7 +84,7 @@ namespace PDR_Jobs
                         string SearchTech = Console.ReadLine();
                         foreach (Tech tech in dataBase.techs)
                         {
-                            if (tech.FullName.ToUpper().Contains(SearchTech))
+                            if (tech.FullName.ToUpper().Contains(SearchTech.ToUpper()))
                                 UI.PrintTechInfo(tech);
                         }
                         break;
@@ -95,7 +95,7 @@ namespace PDR_Jobs
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
 
                         {
-                            if (bodyshop.Name.ToUpper().Contains(SBS))
+                            if (bodyshop.Name.ToUpper().Contains(SBS.ToUpper()))
                                 UI.PrintBodyShopInfo(bodyshop);
                             var foundBodyShop = bodyshop;
                             foundBodyShop.Damages.Add(UI.InputDamageInfo());    
