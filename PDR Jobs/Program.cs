@@ -29,11 +29,6 @@ namespace PDR_Jobs
             Console.WriteLine("To search for a tech by name enter 6");
             Console.WriteLine("To post new jobs enter 7");
 
-            //case 7: add new damage to bodyshop
-            //selecting one specific bodyshop (by searching by name, or by displaying them all and selecting by number)
-            // foundbodyshop variable
-            // foundbodyshop.damages.add(UI.InputDamage())
-
 
             {
                 int userinput = int.Parse(Console.ReadLine());
@@ -60,14 +55,14 @@ namespace PDR_Jobs
                             Console.WriteLine($"{t.FirstName} { t.LastName}");
                         }
                         break;
-                        
+
                     case 4:
                         string stateInput = Console.ReadLine();
                         foreach (BodyShop bs in dataBase.bodyShops)
                         {
                             if (bs.Address.State.ToUpper().Contains(stateInput.ToUpper()))
-                                Console.WriteLine($"{bs.Name}");               
-                       }
+                                Console.WriteLine($"{bs.Name}");
+                        }
                         break;
 
                     case 5:
@@ -90,7 +85,6 @@ namespace PDR_Jobs
                         break;
 
                     case 7:
-
                         string SBS = Console.ReadLine();
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
 
@@ -98,17 +92,10 @@ namespace PDR_Jobs
                             if (bodyshop.Name.ToUpper().Contains(SBS.ToUpper()))
                                 UI.PrintBodyShopInfo(bodyshop);
                             var foundBodyShop = bodyshop;
-                            foundBodyShop.Damages.Add(UI.InputDamageInfo());    
+                            foundBodyShop.Damages.Add(UI.InputDamageInfo());
                         }
                         break;
                 }
-
-
-                //test code:
-
-
-                //Console.WriteLine("This is the tech info after entereing it:");
-                //UI.PrintTechInfo(aTech);
 
                 //Console.WriteLine("Now we're at a pint where we want to update this tech's adress");
 
@@ -118,42 +105,33 @@ namespace PDR_Jobs
 
                 //UI.PrintTechInfo(aTech);
 
-                Tech T = UI.InputTechData();
+                //Tech T = UI.InputTechData();
 
-                dataBase.techs.Add(T);
-                UI.PrintTechInfo(T);
+                //dataBase.techs.Add(T);
+                //UI.PrintTechInfo(T);
 
-                //print all techs names:
+                ////print all techs names:
 
-                foreach (Tech t in dataBase.techs)
-                {
-                    if (t.FirstName == "joe")
-                    {
-                        Console.WriteLine("We found joe!, here are his details:");
-                        UI.PrintTechInfo(t);
+                //foreach (Tech t in dataBase.techs)
+                //{
+                //    if (t.FirstName == "joe")
+                //    {
+                //        Console.WriteLine("We found joe!, here are his details:");
+                //        UI.PrintTechInfo(t);
 
-                        t.ContactInfos.Add(UI.InputContactInfoData());
-                    }
-                }
+                //        t.ContactInfos.Add(UI.InputContactInfoData());
+                //    }
+                //}
 
-                if (T.Address.State == "Texas")
-                {
-                    Console.WriteLine("Sorry no service for you");
-                }
+                //if (T.Address.State == "Texas")
+                //{
+                //    Console.WriteLine("Sorry no service for you");
+                //}
 
-                dataBase.techs.Add(T);
+                //dataBase.techs.Add(T);
 
 
             }
-
-
-            //options 1 to enter bodyshop
-            //2 to enter tech details
-            //3 to search for bodyshop by state
-
-
-            //if selection = 1:
-            //call ui method to get user input for bodyshopdata
 
 
             //some business logic:
@@ -162,8 +140,6 @@ namespace PDR_Jobs
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
             TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
             serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
-
-
 
             //if selection = 3
             //ui method that asks user for the state
