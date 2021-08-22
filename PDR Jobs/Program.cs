@@ -80,19 +80,23 @@ namespace PDR_Jobs
                         foreach (Tech tech in dataBase.techs)
                         {
                             if (tech.FullName.ToUpper().Contains(SearchTech.ToUpper()))
-                                UI.PrintTechInfo(tech);
+                            { 
+                                UI.PrintTechInfo(tech); 
+                            }
                         }
                         break;
 
                     case 7:
+                        Console.WriteLine("enter bodyshop name");
                         string SBS = Console.ReadLine();
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
-
                         {
                             if (bodyshop.Name.ToUpper().Contains(SBS.ToUpper()))
+                            {
                                 UI.PrintBodyShopInfo(bodyshop);
-                            var foundBodyShop = bodyshop;
-                            foundBodyShop.Damages.Add(UI.InputDamageInfo());
+                                var foundBodyShop = bodyshop;
+                                foundBodyShop.Damages.Add(UI.InputDamageInfo());
+                            }
                         }
                         break;
                 }
