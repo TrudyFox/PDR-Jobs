@@ -1,7 +1,9 @@
 ﻿
 
+using HtmlAgilityPack;
 using System;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace PDR_Jobs
@@ -9,8 +11,38 @@ namespace PDR_Jobs
     public class Program
     {
         static void Main(string[] args)
-        {
-            Data dataBase = new Data();
+        {       ///html test here
+        //    var html = @"https://auto-body-shops.regionaldirectory.us/arizona.htm";
+            var html = @"https://auto-body-shops.regionaldirectory.us/new-mexico.htm";
+
+            HtmlWeb web = new HtmlWeb();
+
+            var htmlDoc = web.Load(html);
+
+            var nodes = htmlDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]");
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                HtmlNode node = nodes[i];
+          //      Console.WriteLine(node.InnerHtml);
+
+                var innerText = node.InnerText;
+                var split = innerText.Split("\r\n\t");
+
+                string location = split[2];
+                var locationSplit = location.Split(" ");
+
+
+                var linkNode = node.SelectNodes("./a").First();
+                var linkURL = linkNode.Attributes["href"].Value;
+
+                Console.WriteLine(linkURL);
+            }
+
+
+            ///end html test code
+
+
+            var dataBase = new Data();
 
             var mySerializer = new XmlSerializer(typeof(Data));                         //this just loads the data into the database object
             using (var myFileStream = new FileStream("test.xml", FileMode.Open))        //this just loads the data into the database object
@@ -68,7 +100,6 @@ namespace PDR_Jobs
                     case 5:
                         string SearchBS = Console.ReadLine();
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
-
                         {
                             if (bodyshop.Name.ToUpper().Contains(SearchBS.ToUpper()))
                                 UI.PrintBodyShopInfo(bodyshop);
@@ -80,8 +111,8 @@ namespace PDR_Jobs
                         foreach (Tech tech in dataBase.techs)
                         {
                             if (tech.FullName.ToUpper().Contains(SearchTech.ToUpper()))
-                            { 
-                                UI.PrintTechInfo(tech); 
+                            {
+                                UI.PrintTechInfo(tech);
                             }
                         }
                         break;

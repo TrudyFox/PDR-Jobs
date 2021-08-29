@@ -6,4 +6,8 @@
     <RootNamespace>PDR_Jobs</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
+  </ItemGroup>
+
 </Project>
