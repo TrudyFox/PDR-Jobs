@@ -12,24 +12,24 @@ namespace PDR_Jobs
     {
         static void Main(string[] args)
         {       ///html test here
-        //    var html = @"https://auto-body-shops.regionaldirectory.us/arizona.htm";
-            var html = @"https://auto-body-shops.regionaldirectory.us/new-mexico.htm";
+            var html = @"https://auto-body-shops.regionaldirectory.us/";
+           
 
             HtmlWeb web = new HtmlWeb();
 
             var htmlDoc = web.Load(html);
 
-            var nodes = htmlDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]");
+            var nodes = htmlDoc.DocumentNode.SelectNodes("//td/div[@class='o'] ");
             for (int i = 0; i < nodes.Count; i++)
             {
                 HtmlNode node = nodes[i];
-          //      Console.WriteLine(node.InnerHtml);
+              Console.WriteLine(node.InnerHtml);
 
-                var innerText = node.InnerText;
-                var split = innerText.Split("\r\n\t");
+                //var innerText = node.InnerText;
+                //var split = innerText.Split(" title= ");
 
-                string location = split[2];
-                var locationSplit = location.Split(" ");
+                //string location = split[2];
+                //var locationSplit = location.Split(" ");
 
 
                 var linkNode = node.SelectNodes("./a").First();
