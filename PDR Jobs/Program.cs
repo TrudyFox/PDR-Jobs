@@ -2,6 +2,7 @@
 
 using HtmlAgilityPack;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -13,30 +14,58 @@ namespace PDR_Jobs
         static void Main(string[] args)
         {       ///html test here
             var html = @"https://auto-body-shops.regionaldirectory.us/";
-           
+
 
             HtmlWeb web = new HtmlWeb();
 
             var htmlDoc = web.Load(html);
 
-            var nodes = htmlDoc.DocumentNode.SelectNodes("//td/div[@class='o'] ");
-            for (int i = 0; i < nodes.Count; i++)
+
+
+            var stateLinks = htmlDoc.DocumentNode.SelectNodes("//td/div[@class='o']/a");
+
+            List<string> statePAgeLinks = new List<string>();
+
+
+            for (int i = 0; i < stateLinks.Count; i++)
             {
-                HtmlNode node = nodes[i];
-              Console.WriteLine(node.InnerHtml);
+                HtmlNode node = stateLinks[i];
+                Console.WriteLine(node.InnerHtml);
 
-                //var innerText = node.InnerText;
-                //var split = innerText.Split(" title= ");
+                var link = node.Attributes["href"].Value;
 
-                //string location = split[2];
-                //var locationSplit = location.Split(" ");
-
-
-                var linkNode = node.SelectNodes("./a").First();
-                var linkURL = linkNode.Attributes["href"].Value;
-
-                Console.WriteLine(linkURL);
+                statePAgeLinks.Add(link);
             }
+
+            var StateNodes = htmlDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tbody/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
+            foreach (string element in statePAgeLinks)
+            {
+                var stateDoc = web.Load(element);
+                var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]");
+                //HtmlNode h2Node = bsNode.ChildNodes["//tr[2]/td[1][1]"];
+
+                foreach (var nodes in bsNodes)
+                {
+                    var bsName = nodes.SelectNodes("//tr[4]/td[1]/a");
+
+                }
+            }
+
+
+
+            //get all the relevant infor into strings
+
+
+            //var bsLink = stateDoc.DocumentNode.SelectNodes("//tr[2]/td[1]/a[1]");
+            //var bsPhoneAddressLk = stateDoc.DocumentNode.SelectNodes("//tr[2]/td[1]/a[2]");
+
+            //create a new bodyshop object
+            //assign all those stings to the bodyshops fields
+
+            //Add
+            //this bodyshop to the database
+
+
 
 
             ///end html test code
