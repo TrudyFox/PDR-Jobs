@@ -13,40 +13,40 @@ namespace PDR_Jobs
     {
         static void Main(string[] args)
         {       ///html test here
-            var html = @"https://auto-body-shops.regionaldirectory.us/";
+            var stateIndexLink = @"https://auto-body-shops.regionaldirectory.us/";
 
 
             HtmlWeb web = new HtmlWeb();
 
-            var htmlDoc = web.Load(html);
+            var stateIndexDoc = web.Load(stateIndexLink);
 
 
 
-            var stateLinks = htmlDoc.DocumentNode.SelectNodes("//td/div[@class='o']/a");
+            var stateLinkNodes = stateIndexDoc.DocumentNode.SelectNodes("//td/div[@class='o']/a");
 
-            List<string> statePAgeLinks = new List<string>();
+            List<string> statePageLinks = new List<string>();
 
 
-            for (int i = 0; i < stateLinks.Count; i++)
+            for (int i = 0; i < stateLinkNodes.Count; i++)
             {
-                HtmlNode node = stateLinks[i];
-                Console.WriteLine(node.InnerHtml);
+                HtmlNode stateLinkNode = stateLinkNodes[i];
+                Console.WriteLine(stateLinkNode.InnerHtml);
 
-                var link = node.Attributes["href"].Value;
+                var statePageLink = stateLinkNode.Attributes["href"].Value;
 
-                statePAgeLinks.Add(link);
+                statePageLinks.Add(statePageLink);
             }
 
-            var StateNodes = htmlDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tbody/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
-            foreach (string element in statePAgeLinks)
+            var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
+            foreach (string statePageLink in statePageLinks)
             {
-                var stateDoc = web.Load(element);
+                var stateDoc = web.Load(statePageLink);
                 var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]");
                 //HtmlNode h2Node = bsNode.ChildNodes["//tr[2]/td[1][1]"];
 
-                foreach (var nodes in bsNodes)
+                foreach (var bsNode in bsNodes)
                 {
-                    var bsName = nodes.SelectNodes("//tr[4]/td[1]/a");
+                    var bsName = bsNode.SelectNodes("//tr[4]/td[1]/a");
 
                 }
             }
