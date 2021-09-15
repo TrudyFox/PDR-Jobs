@@ -12,7 +12,17 @@ namespace PDR_Jobs
     public class Program
     {
         static void Main(string[] args)
-        {       ///html test here
+        {
+            var dataBase = new Data();
+
+            var mySerializer = new XmlSerializer(typeof(Data));                         //this just loads the data into the database object
+            using (var myFileStream = new FileStream("test.xml", FileMode.Open))        //this just loads the data into the database object
+            {
+                dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
+            }
+
+
+            ///html test here
             var stateIndexLink = @"https://auto-body-shops.regionaldirectory.us/";
 
 
@@ -37,7 +47,7 @@ namespace PDR_Jobs
                 statePageLinks.Add(statePageLink);
             }
 
-            var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
+        //    var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
             foreach (string statePageLink in statePageLinks)
             {
                 var stateDoc = web.Load(statePageLink);
@@ -46,7 +56,23 @@ namespace PDR_Jobs
 
                 foreach (var bsNode in bsNodes)
                 {
-                    var bsName = bsNode.SelectNodes("//tr[4]/td[1]/a");
+                    var bs = new BodyShop();
+                    var bsLinkNode = bsNode.SelectSingleNode(".//a[1]");
+                    var bsName = bsLinkNode.InnerHtml;
+                    var bsLink = bsLinkNode.Attributes["href"].Value;
+                    var bsAdressLinkNode = bsNode.SelectSingleNode(".//a[2]");
+
+                    bs.Name = bsName;
+                    bs.HomePage = bsLink;
+                    if(bsAdressLinkNode != null)
+                    {
+                        var bsAdressLink = bsAdressLinkNode.Attributes["href"].Value;
+                        Address bsAdress = GetAdressFromLink(bsAdressLink);
+                        bs.Address = bsAdress;
+                    }
+
+
+                    dataBase.bodyShops.Add(bs);
 
                 }
             }
@@ -71,13 +97,7 @@ namespace PDR_Jobs
             ///end html test code
 
 
-            var dataBase = new Data();
 
-            var mySerializer = new XmlSerializer(typeof(Data));                         //this just loads the data into the database object
-            using (var myFileStream = new FileStream("test.xml", FileMode.Open))        //this just loads the data into the database object
-            {
-                dataBase = (Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
-            }
 
 
             Console.WriteLine("PDR JOBS");
@@ -212,6 +232,24 @@ namespace PDR_Jobs
 
         }
 
+        private static Address GetAdressFromLink(string bsAdressLink)
+        {
+            HtmlWeb web = new HtmlWeb();
+
+            var bsAdressPage = web.Load(bsAdressLink);
+            var bsAdressTextNode = bsAdressPage.DocumentNode.SelectSingleNode("/html/body/table[@id='zbt']/tr[5]/td/div[@class='b'][2]");
+
+
+            var bsAdressText = bsAdressTextNode.InnerText;
+
+            //splitting the string to get the relevant information
+
+            var adress = new Address();
+         
+
+            return adress;
+
+        }
 
         static bool DoesShopWithNameExist(Data db, string theNameToLookFor)
         {
