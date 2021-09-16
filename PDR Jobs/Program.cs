@@ -241,13 +241,23 @@ namespace PDR_Jobs
 
 
             var bsAdressText = bsAdressTextNode.InnerText;
+            var innerText = bsAdressTextNode.InnerText;
+            var splitA = innerText.Split("is");
+
+
+
+            var splitB = splitA[1].Split("&");
+
 
             //splitting the string to get the relevant information
+            //var innerText = node.InnerText;
+            //var split = innerText.Split(" title= ");
 
-            var adress = new Address();
-         
 
-            return adress;
+            var address = new Address();
+
+
+            return address;
 
         }
 
