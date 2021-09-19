@@ -47,11 +47,11 @@ namespace PDR_Jobs
                 statePageLinks.Add(statePageLink);
             }
 
-        //    var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
+            //    var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
             foreach (string statePageLink in statePageLinks)
             {
                 var stateDoc = web.Load(statePageLink);
-                var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]");
+                var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]"); // selects each table element containing the bodyshop info
                 //HtmlNode h2Node = bsNode.ChildNodes["//tr[2]/td[1][1]"];
 
                 foreach (var bsNode in bsNodes)
@@ -61,25 +61,27 @@ namespace PDR_Jobs
                     var bsName = bsLinkNode.InnerHtml;
                     var bsLink = bsLinkNode.Attributes["href"].Value;
                     var bsAdressLinkNode = bsNode.SelectSingleNode(".//a[2]");
+                    
+
+                    var cI = GetContactInfo(bsNode);
+                    
 
                     bs.Name = bsName;
                     bs.HomePage = bsLink;
-                    if(bsAdressLinkNode != null)
+                    bs.ContactInfos.Add(cI);
+                  
+                    if (bsAdressLinkNode != null)
                     {
                         var bsAdressLink = bsAdressLinkNode.Attributes["href"].Value;
                         Address bsAdress = GetAdressFromLink(bsAdressLink);
                         bs.Address = bsAdress;
-                    }
 
+                    }
 
                     dataBase.bodyShops.Add(bs);
 
                 }
             }
-
-
-
-            //get all the relevant infor into strings
 
 
             //var bsLink = stateDoc.DocumentNode.SelectNodes("//tr[2]/td[1]/a[1]");
@@ -170,6 +172,7 @@ namespace PDR_Jobs
                         Console.WriteLine("enter bodyshop name");
                         string SBS = Console.ReadLine();
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
+                        
                         {
                             if (bodyshop.Name.ToUpper().Contains(SBS.ToUpper()))
                             {
@@ -178,6 +181,9 @@ namespace PDR_Jobs
                                 foundBodyShop.Damages.Add(UI.InputDamageInfo());
                             }
                         }
+                        break;
+
+                    default:
                         break;
                 }
 
@@ -232,6 +238,20 @@ namespace PDR_Jobs
 
         }
 
+        private static ContactInfo GetContactInfo(HtmlNode bsNode)
+        {
+            ContactInfo cI = new ContactInfo();
+
+            var bsPhoneAllText = bsNode.InnerHtml;
+            var bsAllTextSplit = bsPhoneAllText.Split("<br>");
+            var bsPhone = bsAllTextSplit[2].Trim();
+
+            cI.PhoneNumer = bsPhone;
+
+            return cI;
+     
+        }
+
         private static Address GetAdressFromLink(string bsAdressLink)
         {
             HtmlWeb web = new HtmlWeb();
@@ -242,21 +262,15 @@ namespace PDR_Jobs
 
             var bsAdressText = bsAdressTextNode.InnerText;
             var innerText = bsAdressTextNode.InnerText;
-            var splitA = innerText.Split("is");
+            var AddressSplitA = innerText.Split("is");
+            var AddressSplitB = AddressSplitA[1].Split("&");
 
-
-
-            var splitB = splitA[1].Split("&");
-
-
-            //splitting the string to get the relevant information
-            //var innerText = node.InnerText;
-            //var split = innerText.Split(" title= ");
-
+            var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".","");
 
             var address = new Address();
 
-
+            address.ZipCode = int.Parse(zipCode);
+            //TODO: assign the correct values to the adress object
             return address;
 
         }
