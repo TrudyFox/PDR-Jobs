@@ -264,13 +264,21 @@ namespace PDR_Jobs
             var innerText = bsAdressTextNode.InnerText;
             var AddressSplitA = innerText.Split("is");
             var AddressSplitB = AddressSplitA[1].Split("&");
+            var AddressSplitC = AddressSplitA[1].Split(",");
 
             var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".","");
+            var streetAddress = AddressSplitC[0];
+            var city = AddressSplitC[1];
+            var state = AddressSplitC[2].Replace("&nbsp; 35242.&nbsp; \r\n", "");
 
             var address = new Address();
 
             address.ZipCode = int.Parse(zipCode);
+            address.City = city;
+            address.State = state;
+            address.StreetAddress = streetAddress;
             //TODO: assign the correct values to the adress object
+
             return address;
 
         }
