@@ -256,23 +256,25 @@ namespace PDR_Jobs
 
             var AddressFromText = innerText.Split(" is ");
             var AddressSplitB = AddressFromText[1].Split("&");
-     
             var AddressSplitC = AddressFromText[1].Split(",");
+            var AddressSplitD = AddressSplitC[2].Split("&");
+            
 
             var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".", "");
 
-            var streetAddress = AddressSplitC[0];
-            var city = AddressSplitC[1];
-            var state = AddressSplitC[2].Replace("&nbsp; " + zipCode + ".&nbsp; \r\n", "");
-            var stateSplit = state.Split(" ");
-            var stateSplitA = state.Split("&");
-            state = stateSplitA[0];
+            var streetAddress = AddressSplitC[1];
+            var city = AddressSplitC[2];
+            var State = AddressSplitD[1];
+           // var state = AddressSplitC[2].Replace("&nbsp; " + zipCode + ".&nbsp; \r\n", "");
+           // var stateSplit = state.Split(" ");
+            //var stateSplitA = state.Split("&");
+           // state = stateSplit[1];
 
             var address = new Address();
 
             address.ZipCode = int.Parse(zipCode);
             address.City = city.Trim();
-            address.State = state.Trim();
+            address.State = State.Trim();
             address.StreetAddress = streetAddress;
             //TODO: assign the correct values to the adress object
 
