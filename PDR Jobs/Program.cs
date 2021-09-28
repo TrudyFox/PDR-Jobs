@@ -47,12 +47,11 @@ namespace PDR_Jobs
                 statePageLinks.Add(statePageLink);
             }
 
-            //    var StateNodes = stateIndexDoc.DocumentNode.SelectNodes("/html/body/table[@id='top']/tr[4]/td[@class='b']/li/table[@class='b']/tbody/tr[4]/td[1]");
             foreach (string statePageLink in statePageLinks)
             {
                 var stateDoc = web.Load(statePageLink);
                 var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]"); // selects each table element containing the bodyshop info
-                //HtmlNode h2Node = bsNode.ChildNodes["//tr[2]/td[1][1]"];
+              
 
                 foreach (var bsNode in bsNodes)
                 {
@@ -61,15 +60,15 @@ namespace PDR_Jobs
                     var bsName = bsLinkNode.InnerHtml;
                     var bsLink = bsLinkNode.Attributes["href"].Value;
                     var bsAdressLinkNode = bsNode.SelectSingleNode(".//a[2]");
-                    
+
 
                     var cI = GetContactInfo(bsNode);
-                    
+
 
                     bs.Name = bsName;
                     bs.HomePage = bsLink;
                     bs.ContactInfos.Add(cI);
-                  
+
                     if (bsAdressLinkNode != null)
                     {
                         var bsAdressLink = bsAdressLinkNode.Attributes["href"].Value;
@@ -84,22 +83,13 @@ namespace PDR_Jobs
             }
 
 
-            //var bsLink = stateDoc.DocumentNode.SelectNodes("//tr[2]/td[1]/a[1]");
-            //var bsPhoneAddressLk = stateDoc.DocumentNode.SelectNodes("//tr[2]/td[1]/a[2]");
-
             //create a new bodyshop object
             //assign all those stings to the bodyshops fields
 
-            //Add
-            //this bodyshop to the database
-
-
+            //Add this bodyshop to the database
 
 
             ///end html test code
-
-
-
 
 
             Console.WriteLine("PDR JOBS");
@@ -161,6 +151,7 @@ namespace PDR_Jobs
                         string SearchTech = Console.ReadLine();
                         foreach (Tech tech in dataBase.techs)
                         {
+
                             if (tech.FullName.ToUpper().Contains(SearchTech.ToUpper()))
                             {
                                 UI.PrintTechInfo(tech);
@@ -172,7 +163,7 @@ namespace PDR_Jobs
                         Console.WriteLine("enter bodyshop name");
                         string SBS = Console.ReadLine();
                         foreach (BodyShop bodyshop in dataBase.bodyShops)
-                        
+
                         {
                             if (bodyshop.Name.ToUpper().Contains(SBS.ToUpper()))
                             {
@@ -249,7 +240,7 @@ namespace PDR_Jobs
             cI.PhoneNumer = bsPhone;
 
             return cI;
-     
+
         }
 
         private static Address GetAdressFromLink(string bsAdressLink)
@@ -261,21 +252,27 @@ namespace PDR_Jobs
 
 
             var bsAdressText = bsAdressTextNode.InnerText;
-            var innerText = bsAdressTextNode.InnerText;
-            var AddressSplitA = innerText.Split("is");
-            var AddressSplitB = AddressSplitA[1].Split("&");
-            var AddressSplitC = AddressSplitA[1].Split(",");
+            var innerText = bsAdressTextNode.InnerText; 
 
-            var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".","");
+            var AddressFromText = innerText.Split(" is ");
+            var AddressSplitB = AddressFromText[1].Split("&");
+     
+            var AddressSplitC = AddressFromText[1].Split(",");
+
+            var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".", "");
+
             var streetAddress = AddressSplitC[0];
             var city = AddressSplitC[1];
-            var state = AddressSplitC[2].Replace("&nbsp; 35242.&nbsp; \r\n", "");
+            var state = AddressSplitC[2].Replace("&nbsp; " + zipCode + ".&nbsp; \r\n", "");
+            var stateSplit = state.Split(" ");
+            var stateSplitA = state.Split("&");
+            state = stateSplitA[0];
 
             var address = new Address();
 
             address.ZipCode = int.Parse(zipCode);
-            address.City = city;
-            address.State = state;
+            address.City = city.Trim();
+            address.State = state.Trim();
             address.StreetAddress = streetAddress;
             //TODO: assign the correct values to the adress object
 
