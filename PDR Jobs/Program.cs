@@ -25,12 +25,9 @@ namespace PDR_Jobs
             ///html test here
             var stateIndexLink = @"https://auto-body-shops.regionaldirectory.us/";
 
-
             HtmlWeb web = new HtmlWeb();
 
             var stateIndexDoc = web.Load(stateIndexLink);
-
-
 
             var stateLinkNodes = stateIndexDoc.DocumentNode.SelectNodes("//td/div[@class='o']/a");
 
@@ -60,10 +57,8 @@ namespace PDR_Jobs
                     var bsName = bsLinkNode.InnerHtml;
                     var bsLink = bsLinkNode.Attributes["href"].Value;
                     var bsAdressLinkNode = bsNode.SelectSingleNode(".//a[2]");
-
-
+                    var bsStateZip = bsNode.InnerText;
                     var cI = GetContactInfo(bsNode);
-
 
                     bs.Name = bsName;
                     bs.HomePage = bsLink;
@@ -76,21 +71,31 @@ namespace PDR_Jobs
                         bs.Address = bsAdress;
 
                     }
+                    else 
+                    {
+                        var stateZipSplit = bsNode.InnerText.Split("\r\n");
+                        var CityStateZip = stateZipSplit[2];
+                        var splitCity = CityStateZip.Split(",");
+                        var Acity = splitCity[0];
+                        var splitState = splitCity[1].Split(" ");
+                        var Astate = splitState[1];
+                        var Azip = splitState[2];
+                        Address Fuck = new Address();
+                        Fuck.City = Acity;
+                        Fuck.State = Astate;
+                       //Fuck.ZipCode = Azip; 
+                        bs.Address = Fuck;
 
+                       // if (bsNode.InnerText.l == 
+
+                    }
                     dataBase.bodyShops.Add(bs);
 
-                }
+                } 
             }
-
-
-            //create a new bodyshop object
-            //assign all those stings to the bodyshops fields
-
-            //Add this bodyshop to the database
-
-
-            ///end html test code
-
+            //XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
+            //TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
+            //serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
 
             Console.WriteLine("PDR JOBS");
 
@@ -211,16 +216,9 @@ namespace PDR_Jobs
 
                 //dataBase.techs.Add(T);
 
-
             }
 
-
             //some business logic:
-
-
-            XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
-            TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
-            serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
 
             //if selection = 3
             //ui method that asks user for the state
@@ -250,26 +248,23 @@ namespace PDR_Jobs
             var bsAdressPage = web.Load(bsAdressLink);
             var bsAdressTextNode = bsAdressPage.DocumentNode.SelectSingleNode("/html/body/table[@id='zbt']/tr[5]/td/div[@class='b'][2]");
 
-
             var bsAdressText = bsAdressTextNode.InnerText;
             var innerText = bsAdressTextNode.InnerText; 
 
             var AddressSplitA = innerText.Split(" is ");
             var AddressSplitB = AddressSplitA[1].Split("&");
+
+            //if (AddressSplitB.Length != 3) //invalid data
+            //{
+            //    return null;
+            //}
+
             var AddressSplitC = AddressSplitA[1].Split(",");
             var AddressSplitD = AddressSplitC[2].Split("&");
-            
-
             var zipCode = AddressSplitB[1].Replace("nbsp; ", "").Replace(".", "");
-
             var streetAddress = AddressSplitC[0];
             var city = AddressSplitC[1];
-            //var State = AddressSplitD[1];
             var State = AddressSplitD[0].Replace("&nbsp; " + zipCode + ".&nbsp; \r\n", "");
-           // var stateSplit = state.Split(" ");
-            //var stateSplitA = state.Split("&");
-           // state = stateSplit[1];
-
             var address = new Address();
 
             address.ZipCode = int.Parse(zipCode);
@@ -293,10 +288,6 @@ namespace PDR_Jobs
 
             return doesExist;
         }
-
-
-
-
 
 
     }

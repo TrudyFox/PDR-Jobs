@@ -32,5 +32,9 @@ namespace PDR_Jobs
 
         }
 
+        //public static implicit operator Address(string v)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

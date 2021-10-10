@@ -10,5 +10,8 @@ namespace PDR_Jobs
     {
         public String PhoneNumer;
         public String Email;
+
+        // add tostring
+
     }
 }
