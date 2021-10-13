@@ -73,7 +73,11 @@ namespace PDR_Jobs
                     }
                     else 
                     {
+                        try
+                        {
+                           
                         var stateZipSplit = bsNode.InnerText.Split("\r\n");
+                    
                         var CityStateZip = stateZipSplit[2];
                         var splitCity = CityStateZip.Split(",");
                         var Acity = splitCity[0];
@@ -83,19 +87,22 @@ namespace PDR_Jobs
                         Address Fuck = new Address();
                         Fuck.City = Acity;
                         Fuck.State = Astate;
-                       //Fuck.ZipCode = Azip; 
+                        Fuck.ZipCode = int.Parse(Azip); 
                         bs.Address = Fuck;
-
-                       // if (bsNode.InnerText.l == 
+                        }
+                        catch (Exception BullShit)
+                        {
+                            return;
+                        }
 
                     }
                     dataBase.bodyShops.Add(bs);
 
                 } 
             }
-            //XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
-            //TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
-            //serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
+            XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
+            TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
+            serializer.Serialize(writer, dataBase);                         //this just saves whaever is in database to test.xml
 
             Console.WriteLine("PDR JOBS");
 
@@ -254,10 +261,10 @@ namespace PDR_Jobs
             var AddressSplitA = innerText.Split(" is ");
             var AddressSplitB = AddressSplitA[1].Split("&");
 
-            //if (AddressSplitB.Length != 3) //invalid data
-            //{
-            //    return null;
-            //}
+            if (AddressSplitB.Length != 3) //invalid data
+            {
+                return null;
+            }
 
             var AddressSplitC = AddressSplitA[1].Split(",");
             var AddressSplitD = AddressSplitC[2].Split("&");
