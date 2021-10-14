@@ -48,7 +48,7 @@ namespace PDR_Jobs
             {
                 var stateDoc = web.Load(statePageLink);
                 var bsNodes = stateDoc.DocumentNode.SelectNodes("//table[@class='b']/tr[position() mod 2 = 0]/td[1]"); // selects each table element containing the bodyshop info
-              
+
 
                 foreach (var bsNode in bsNodes)
                 {
@@ -71,34 +71,34 @@ namespace PDR_Jobs
                         bs.Address = bsAdress;
 
                     }
-                    else 
+                    else
                     {
                         try
                         {
-                           
-                        var stateZipSplit = bsNode.InnerText.Split("\r\n");
-                    
-                        var CityStateZip = stateZipSplit[2];
-                        var splitCity = CityStateZip.Split(",");
-                        var Acity = splitCity[0];
-                        var splitState = splitCity[1].Split(" ");
-                        var Astate = splitState[1];
-                        var Azip = splitState[2];
-                        Address Fuck = new Address();
-                        Fuck.City = Acity;
-                        Fuck.State = Astate;
-                        Fuck.ZipCode = int.Parse(Azip); 
-                        bs.Address = Fuck;
+
+                            var stateZipSplit = bsNode.InnerText.Split("\r\n");
+
+                            var CityStateZip = stateZipSplit[2];
+                            var splitCity = CityStateZip.Split(",");
+                            var Acity = splitCity[0];
+                            var splitState = splitCity[1].Split(" ");
+                            var Astate = splitState[1];
+                            var Azip = splitState[2];
+                            Address Fuck = new Address();
+                            Fuck.City = Acity.Trim();
+                            Fuck.State = Astate;
+                            Fuck.ZipCode = int.Parse(Azip);
+                            bs.Address = Fuck;
                         }
                         catch (Exception BullShit)
                         {
-                            return;
+                            Console.WriteLine("Parings Failed: " + bsName);
                         }
 
                     }
                     dataBase.bodyShops.Add(bs);
 
-                } 
+                }
             }
             XmlSerializer serializer = new XmlSerializer(typeof(Data));     //this just saves whaever is in database to test.xml
             TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
@@ -256,7 +256,7 @@ namespace PDR_Jobs
             var bsAdressTextNode = bsAdressPage.DocumentNode.SelectSingleNode("/html/body/table[@id='zbt']/tr[5]/td/div[@class='b'][2]");
 
             var bsAdressText = bsAdressTextNode.InnerText;
-            var innerText = bsAdressTextNode.InnerText; 
+            var innerText = bsAdressTextNode.InnerText;
 
             var AddressSplitA = innerText.Split(" is ");
             var AddressSplitB = AddressSplitA[1].Split("&");
