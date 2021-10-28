@@ -1,16 +1,32 @@
 ﻿@page "/counter"
-
+@inject Data.PDRDataServ pdrDataService
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="LoadData">Load Data</button>
+<button class="btn btn-primary" @onclick="LoadData">Texas Shops</button>
+<input />
+<p>@_someinfo</p>
 
 @code {
     private int currentCount = 0;
+    private string _someinfo;
 
     private void IncrementCount()
     {
         currentCount++;
+
+        _someinfo = pdrDataService.data.bodyShops[3].ToString();
+
+
+    }
+
+    private void LoadData()
+    {
+        pdrDataService.Load();
     }
 }
+

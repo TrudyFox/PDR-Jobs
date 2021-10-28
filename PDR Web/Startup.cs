@@ -41,6 +41,7 @@ namespace PDR_Web
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<PDRDataServ>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
