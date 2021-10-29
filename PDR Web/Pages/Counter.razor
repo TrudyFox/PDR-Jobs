@@ -1,5 +1,10 @@
 ﻿@page "/counter"
-@inject Data.PDRDataServ pdrDataService
+@inject Data.PDRDataServ pdrDataService 
+@using PDR_Web
+@using PDR_Jobs 
+
+
+
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
@@ -7,26 +12,41 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
-<button class="btn btn-primary" @onclick="LoadData">Texas Shops</button>
+<button class="btn btn-primary" @onclick="TexasShit">Texas Shops</button>
 <input />
 <p>@_someinfo</p>
+<p>@_TexasShops</p>
+
+@foreach(BodyShop bs in _TexasShops) 
+{
+    <p> @bs.ToString()</p>
+}
 
 @code {
     private int currentCount = 0;
     private string _someinfo;
+    private List<BodyShop> _TexasShops = new List<BodyShop>();
 
     private void IncrementCount()
     {
         currentCount++;
-
-        _someinfo = pdrDataService.data.bodyShops[3].ToString();
-
-
+        _someinfo = pdrDataService.data.bodyShops.ToString();
     }
 
     private void LoadData()
     {
         pdrDataService.Load();
+    }
+
+    private void TexasShit()
+    {
+        foreach (BodyShop bodyShop in _TexasShops)
+        {
+
+            if (bodyShop.Address.State.Contains("Texas"))
+                _TexasShops.Add(bodyShop);
+
+        }
     }
 }
 
