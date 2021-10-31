@@ -1,6 +1,5 @@
 ﻿@page "/counter"
-@inject Data.PDRDataServ pdrDataService 
-@using PDR_Web
+@inject PDR_Web.Data.PDRDataServ pdrDataService
 @using PDR_Jobs 
 
 
@@ -46,6 +45,7 @@
             if (bodyShop.Address.State.Contains("Texas"))
                 _TexasShops.Add(bodyShop);
 
+     
         }
     }
 }
