@@ -39,14 +39,21 @@
 
     private void TexasShit()
     {
-        foreach (BodyShop bodyShop in _TexasShops)
+        foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
+            if (bodyShop.Address != null) 
+           
 
-            if (bodyShop.Address.State.Contains("Texas"))
-                _TexasShops.Add(bodyShop);
+            if (bodyShop.Address.State.Contains("Texas")) 
+            _TexasShops.Add(bodyShop);
+            
 
-     
+
+
+
         }
     }
 }
+
+
 
