@@ -1,6 +1,8 @@
-﻿@page "/counter"
+﻿@page "/bind"
+@page "/counter"
 @inject PDR_Web.Data.PDRDataServ pdrDataService
-@using PDR_Jobs 
+@using PDR_Jobs
+
 
 
 
@@ -11,17 +13,20 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
-<button class="btn btn-primary" @onclick="TexasShit">Texas Shops</button>
-<input />
+@*//<button class="btn btn-primary" @onclick="TexasShit">Texas Shops</button>*@
+<p><input @bind= "_userInput" /></p>
 <p>@_someinfo</p>
 <p>@_TexasShops</p>
 
-@foreach(BodyShop bs in _TexasShops) 
+          
+@foreach (BodyShop bs in _TexasShops)
 {
     <p> @bs.ToString()</p>
 }
 
+
 @code {
+    private string _userInput;
     private int currentCount = 0;
     private string _someinfo;
     private List<BodyShop> _TexasShops = new List<BodyShop>();
@@ -37,23 +42,37 @@
         pdrDataService.Load();
     }
 
-    private void TexasShit()
+    private void searchShops()
     {
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
-            if (bodyShop.Address != null) 
-           
+            if (_userInput == bodyShop.Name) ;
 
-            if (bodyShop.Address.State.Contains("Texas")) 
-            _TexasShops.Add(bodyShop);
-            
-
-
-
-
+            //thennnnnn do something or something
         }
     }
+
+    //private void TexasShit()
+    //{
+
+    //    foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
+    //    {
+
+    //        //if (bodyShop.Address != null && bodyShop.Address.State != null)
+    //        //{
+
+
+    //        //    if (bodyShop.Address.State.Contains("Texas"))
+    //        //    {
+    //        //        _TexasShops.Add(bodyShop);
+    //        //    }
+
+    //        //}
+
+    //    }
+    //}
 }
+
 
 
 
