@@ -1,25 +1,20 @@
-﻿@page "/bind"
-@page "/counter"
+﻿@page "/counter"
 @inject PDR_Web.Data.PDRDataServ pdrDataService
 @using PDR_Jobs
-
-
 
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
-
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
-@*//<button class="btn btn-primary" @onclick="TexasShit">Texas Shops</button>*@
-<p><input @bind= "_userInput" /></p>
-<p>@_someinfo</p>
-<p>@_TexasShops</p>
+<p><input @bind="_userInput" /></p>
+<button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
+<p>@_listOfShops</p>
 
-          
-@foreach (BodyShop bs in _TexasShops)
+
+@foreach (BodyShop bs in _listOfShops)
 {
     <p> @bs.ToString()</p>
 }
@@ -28,13 +23,11 @@
 @code {
     private string _userInput;
     private int currentCount = 0;
-    private string _someinfo;
-    private List<BodyShop> _TexasShops = new List<BodyShop>();
+    private List<BodyShop> _listOfShops = new List<BodyShop>();
 
     private void IncrementCount()
     {
         currentCount++;
-        _someinfo = pdrDataService.data.bodyShops.ToString();
     }
 
     private void LoadData()
@@ -44,33 +37,22 @@
 
     private void searchShops()
     {
+
+        //clear out the results list first
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
-            if (_userInput == bodyShop.Name) ;
+            if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))
+            {
+
+                _listOfShops.Add(bodyShop);
+
+            }
+
 
             //thennnnnn do something or something
         }
     }
 
-    //private void TexasShit()
-    //{
-
-    //    foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
-    //    {
-
-    //        //if (bodyShop.Address != null && bodyShop.Address.State != null)
-    //        //{
-
-
-    //        //    if (bodyShop.Address.State.Contains("Texas"))
-    //        //    {
-    //        //        _TexasShops.Add(bodyShop);
-    //        //    }
-
-    //        //}
-
-    //    }
-    //}
 }
 
 
