@@ -2,23 +2,14 @@
 @inject PDR_Web.Data.PDRDataServ pdrDataService
 @using PDR_Jobs
 
-
-<h1>Counter</h1>
-
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
-<p>@_listOfShops</p>
-
 
 @foreach (BodyShop bs in _listOfShops)
 {
     <p> @bs.ToString()</p>
 }
-
 
 @code {
     private string _userInput;
@@ -41,16 +32,15 @@
         //clear out the results list first
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
+            _listOfShops.Remove(bodyShop);
             if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))
             {
 
                 _listOfShops.Add(bodyShop);
 
             }
-
-
-            //thennnnnn do something or something
         }
+        //thennnnnn do something or something
     }
 
 }
