@@ -6,6 +6,8 @@
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
 
+<SurveyPrompt Title="BODY SHOPPPPPS" />
+
 @foreach (BodyShop bs in _listOfShops)
 {
     <p> @bs.ToString()</p>
@@ -30,9 +32,9 @@
     {
 
         //clear out the results list first
+            _listOfShops.Clear();
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
-            _listOfShops.Remove(bodyShop);
             if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))
             {
 
