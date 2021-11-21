@@ -1,8 +1,51 @@
 ﻿@page "/"
+@using PDR_Jobs
+@using System
+@inject PDR_Web.Data.PDRDataServ dsInstance
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<BodyShopComponent Title="Body Shop" />
-<SurveyPrompt Title="BodyShop" />
+<button class="btn btn-primary" @onclick="LoadData">Load Data</button>
+<p><input @bind="_userInput" /></p>
+<button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
+@foreach (BodyShop bs in _listOfShops)
+{
+    
+<BodyShopComponent Someshit="bs" />
+}
+
+<SurveyPrompt Title="BoduzfkzfiövjhyShop" />
+
+@code
+{
+    private List<BodyShop> _listOfShops = new List<BodyShop>();
+    private string _userInput;
+    private BodyShop _testBodyShop;
+
+    private void searchShops()
+    {
+
+        //clear out the results list first
+        _listOfShops.Clear();
+        foreach (BodyShop bodyShop in dsInstance.data.bodyShops)
+        {
+            if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))
+            {
+
+                _listOfShops.Add(bodyShop);
+
+            }
+        }
+
+        _testBodyShop = _listOfShops.First();
+        //thennnnnn do something or something
+    }
+
+
+    private void LoadData()
+    {
+        dsInstance.Load();
+    }
+}
