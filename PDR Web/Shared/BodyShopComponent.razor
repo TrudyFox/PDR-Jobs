@@ -1,6 +1,5 @@
 ﻿@using PDR_Jobs
 @using System
-<h3>BodyShopComponent</h3>
 
 <div class="alert alert-secondary mt-4" role="alert">
     <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
@@ -8,14 +7,19 @@
     {
         <strong>@Someshit.Name</strong>
         <br />
-        @Someshit.HomePage
+
+        @if (Someshit.HomePage != null)
+                {
+                 <a href="@Someshit.HomePage"><button> @Someshit.Name Web Page</button></a>
+                }
     }
     <span class="text-nowrap">
-        Body Shop Shit....
+        @if (Someshit.Address != null)
+        {
+            @Someshit.Address
+        }
     </span>
-    and other shit
 </div>
-
 @code {
 
     [Parameter]

@@ -3,10 +3,6 @@
 @using System
 @inject PDR_Web.Data.PDRDataServ dsInstance
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
 <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
@@ -15,8 +11,6 @@ Welcome to your new app.
     
 <BodyShopComponent Someshit="bs" />
 }
-
-<SurveyPrompt Title="BoduzfkzfiövjhyShop" />
 
 @code
 {
@@ -40,7 +34,7 @@ Welcome to your new app.
         }
 
         _testBodyShop = _listOfShops.First();
-        //thennnnnn do something or something
+      
     }
 
 

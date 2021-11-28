@@ -6,8 +6,6 @@
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
 
-<SurveyPrompt Title="BODY SHOPPPPPS" />
-
 @foreach (BodyShop bs in _listOfShops)
 {
     <p> @bs.ToString()</p>
