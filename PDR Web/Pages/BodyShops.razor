@@ -1,4 +1,4 @@
-﻿@page "/counter"
+﻿@page "/BodyShops"
 @inject PDR_Web.Data.PDRDataServ pdrDataService
 @using PDR_Jobs
 
@@ -13,13 +13,7 @@
 
 @code {
     private string _userInput;
-    private int currentCount = 0;
     private List<BodyShop> _listOfShops = new List<BodyShop>();
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
 
     private void LoadData()
     {
