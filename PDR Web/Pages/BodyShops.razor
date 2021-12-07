@@ -2,7 +2,7 @@
 @inject PDR_Web.Data.PDRDataServ pdrDataService
 @using PDR_Jobs
 
-<button class="btn btn-primary" @onclick="LoadData">Load Data</button>
+@*<button class="btn btn-primary" @onclick="LoadData">Load Data</button>*@
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
 
@@ -15,16 +15,16 @@
     private string _userInput;
     private List<BodyShop> _listOfShops = new List<BodyShop>();
 
-    private void LoadData()
+    private void PDRDataServ()
     {
-        pdrDataService.Load();
+        PDR_Jobs.Data data;
     }
 
     private void searchShops()
     {
 
         //clear out the results list first
-            _listOfShops.Clear();
+        _listOfShops.Clear();
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
             if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))

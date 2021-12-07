@@ -9,9 +9,10 @@ namespace PDR_Web.Data
 {
     public class PDRDataServ
     {
-        public PDR_Jobs.Data data { get; set; }
+         public PDR_Jobs.Data data { get; set; }
 
-        public void Load()
+       // public void Load();
+        public PDRDataServ()
         {
             var mySerializer = new XmlSerializer(typeof(PDR_Jobs.Data));                         //this just loads the data into the database object
             using (var myFileStream = new FileStream("DataStorage.xml", FileMode.Open))        //this just loads the data into the database object
@@ -19,5 +20,8 @@ namespace PDR_Web.Data
                 data = (PDR_Jobs.Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
             }
         }
+       
+        
     } 
+
 }

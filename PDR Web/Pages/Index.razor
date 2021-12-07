@@ -3,7 +3,7 @@
 @using System
 @inject PDR_Web.Data.PDRDataServ dsInstance
 
-<button class="btn btn-primary" @onclick="LoadData">Load Data</button>
+@*<button class="btn btn-primary" @onclick="LoadData">Load Data</button>*@
 <p><input @bind="_userInput" /></p>
 <button class="btn btn-primary" @onclick="searchShops">Search Shops</button>
 @foreach (BodyShop bs in _listOfShops)
@@ -34,12 +34,13 @@
         }
 
         _testBodyShop = _listOfShops.First();
-      
+
     }
 
+  
 
-    private void LoadData()
-    {
-        dsInstance.Load();
-    }
+    //private void LoadData()
+    //{
+    //    dsInstance.Load();
+    //}
 }
