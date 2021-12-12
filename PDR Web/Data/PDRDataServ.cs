@@ -11,7 +11,6 @@ namespace PDR_Web.Data
     {
          public PDR_Jobs.Data data { get; set; }
 
-       // public void Load();
         public PDRDataServ()
         {
             var mySerializer = new XmlSerializer(typeof(PDR_Jobs.Data));                         //this just loads the data into the database object
@@ -19,11 +18,16 @@ namespace PDR_Web.Data
             {
                 data = (PDR_Jobs.Data)mySerializer.Deserialize(myFileStream);                    //this just loads the data into the database object
             }
-            XmlSerializer serializer = new XmlSerializer(typeof(PDR_Jobs.Data));     //this just saves whaever is in database to test.xml
-            TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
-            serializer.Serialize(writer, data);                         //this just saves whaever is in database to test.xml
         }
 
+        
+        public void PDRDataSave()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(PDR_Jobs.Data));     //this just saves whaever is in database to test.xml
+            TextWriter writer = new StreamWriter("test.xml");               //this just saves whaever is in database to test.xml
+            serializer.Serialize(writer, data);
+            
+        }
     }
 
 }
