@@ -1,9 +1,33 @@
 ﻿@page "/Tech Page"
-@inject PDR_Web.Data.PDRDataServ pdrDataService
+@inject PDR_Web.Data.PDRDataServ PDRData
 @using PDR_Jobs
 
 @code {
-    
+    private string _userInput;
+    private List<Tech> _listOfTechs = new List<Tech>();
+
+    //private void PDRDataServ()
+    //{
+
+
+    //}
+
+    private void searchTechs()
+    {
+
+        //clear out the results list first
+        _listOfTechs.Clear();
+        foreach (Tech Tech in PDRData.data.techs)
+        {
+            if (Tech.FullName.ToUpper().Contains(_userInput.ToUpper()))
+            {
+
+                _listOfTechs.Add(Tech);
+
+            }
+        }
+        //thennnnnn do something or something
+    }
     }
 
 }
