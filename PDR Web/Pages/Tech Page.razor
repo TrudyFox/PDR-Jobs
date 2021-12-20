@@ -2,32 +2,38 @@
 @inject PDR_Web.Data.PDRDataServ PDRData
 @using PDR_Jobs
 
-@code {
-    private string _userInput;
+<p><input @bind="_userInput" /></p>
+<button class="btn btn-primary" @onclick="PDRTechs">PDRTechss</button>
+
+
+@foreach (Tech tech in _listOfTechs)
+{
+    <p> @tech.ToString()</p>}
+
+@code { private string _userInput;
+    private int currentCount = 0;
     private List<Tech> _listOfTechs = new List<Tech>();
 
-    //private void PDRDataServ()
-    //{
-
-
-    //}
-
-    private void searchTechs()
+    private void IncrementCount()
     {
+        currentCount++;
+    }
 
-        //clear out the results list first
+    private void LoadData()
+    {
+    }
+
+    private void PDRTechs()
+    {
         _listOfTechs.Clear();
-        foreach (Tech Tech in PDRData.data.techs)
+        foreach (Tech tech in PDRData.data.techs)
         {
-            if (Tech.FullName.ToUpper().Contains(_userInput.ToUpper()))
+            if (tech.FullName.ToUpper().Contains(_userInput.ToUpper()))
             {
 
-                _listOfTechs.Add(Tech);
+                _listOfTechs.Add(tech);
 
             }
-        }
-        //thennnnnn do something or something
-    }
-    }
 
-}
+        }
+    } }
