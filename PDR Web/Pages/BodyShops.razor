@@ -17,25 +17,19 @@
 
     private void PDRDataServ()
     {
-        
-
     }
 
     private void searchShops()
-    {
-
-        //clear out the results list first
+    {    //clear out the results list 
         _listOfShops.Clear();
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
             if (bodyShop.Name.ToUpper().Contains(_userInput.ToUpper()))
             {
-
                 _listOfShops.Add(bodyShop);
-
             }
         }
-        //thennnnnn do something or something
+        
     }
 
 }

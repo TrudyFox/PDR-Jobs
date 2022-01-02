@@ -1,0 +1,30 @@
+﻿@inject PDR_Web.Data.PDRDataServ dsInstance
+@using PDR_Jobs
+<h3>TechInputComponent</h3>
+<p>FirstName:<input @bind="_firstName" /></p>
+<p>LastName:@*<input @bind="_lastname" />*@</p>
+<p>Adress:@*<AdressInputComponent @bind="_address" />*@</p>
+
+
+@code {
+    private string _firstName;
+    private string _lastname;
+    private string _contactInfo;
+    //private Address _address;
+
+    public void AddTech()
+    {
+        var tech = new Tech();
+        tech.FirstName = _firstName;
+        tech.LastName = _lastname;
+        //tech.ContactInfos = _contactInfo;
+        //tech.Address = _address;
+        //... more to come
+
+        dsInstance.data.techs.Add(tech);
+
+        dsInstance.PDRDataSave();
+    }
+
+
+}
