@@ -8,10 +8,31 @@ namespace PDR_Jobs
 {
     public class ContactInfo
     {
-        public String PhoneNumer;
-        public String Email;
+        private string phoneNumber;
+        private string email;
 
-        // add tostring
+        public string PhoneNumber
+        {
+            get
+            { return phoneNumber; }
+            set
+            {
+                phoneNumber = value;
+            }
+        }
 
-    }
+        public string Email
+        {
+
+            get
+            { return email; }
+            set
+            {
+                email = value;
+            }
+        }
+
+            // add tostring
+
+        }
 }

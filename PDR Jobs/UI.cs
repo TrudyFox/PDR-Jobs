@@ -12,10 +12,9 @@ namespace PDR_Jobs
         {
             Console.WriteLine($"\ntech: \n\tFirst Name: {t.FirstName} \tLast Name: {t.LastName}  ");
             PrintAddress(t.Address);
-            foreach (ContactInfo C in t.ContactInfos)
-            {
-                PrintContactInfo(C);
-            }
+            
+             PrintContactInfo(t.ContactInfos);
+     
 
         }
 
@@ -31,7 +30,7 @@ namespace PDR_Jobs
 
         public static void PrintContactInfo(ContactInfo ct)
         {
-            Console.WriteLine($"\nContact: Phone:{ct.PhoneNumer} \n\tEmail:{ct.Email}");
+            Console.WriteLine($"\nContact: Phone:{ct.PhoneNumber} \n\tEmail:{ct.Email}");
         }
 
         public static void PrintAddress(Address ad)
@@ -50,8 +49,7 @@ namespace PDR_Jobs
             Console.WriteLine("Address"); // can we do a mobile address or this needs to be easily changeable 
             tech.Address = InputAddressData();
             ContactInfo ct = InputContactInfoData();
-            tech.ContactInfos.Add(ct);
-
+            tech.ContactInfos = ct;
             //  Profile page?
 
             return tech;
@@ -95,7 +93,7 @@ namespace PDR_Jobs
         {
             var ContactInfo = new ContactInfo();
             Console.WriteLine("phone number");
-            ContactInfo.PhoneNumer = Console.ReadLine();
+            ContactInfo.PhoneNumber = Console.ReadLine();
             Console.WriteLine("Email Address");
             ContactInfo.Email = Console.ReadLine();
 

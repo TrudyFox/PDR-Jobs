@@ -242,7 +242,7 @@ namespace PDR_Jobs
             var bsAllTextSplit = bsPhoneAllText.Split("<br>");
             var bsPhone = bsAllTextSplit[2].Trim();
 
-            cI.PhoneNumer = bsPhone;
+            cI.PhoneNumber = bsPhone;
 
             return cI;
 
