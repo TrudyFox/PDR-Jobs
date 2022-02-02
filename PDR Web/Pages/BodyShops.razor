@@ -8,19 +8,17 @@
 
 @foreach (BodyShop bs in _listOfShops)
 {
-    <p> @bs.ToString()</p>
+    <BodyShopComponent Someshit="bs" />
+    
 }
 
 @code {
     private string _userInput;
     private List<BodyShop> _listOfShops = new List<BodyShop>();
 
-    private void PDRDataServ()
-    {
-    }
 
     private void searchShops()
-    {    //clear out the results list 
+    {    //clear out the results list
         _listOfShops.Clear();
         foreach (BodyShop bodyShop in pdrDataService.data.bodyShops)
         {
@@ -29,7 +27,7 @@
                 _listOfShops.Add(bodyShop);
             }
         }
-        
+
     }
 
 }

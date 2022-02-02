@@ -8,9 +8,10 @@
 
 @foreach (Tech tech in _listOfTechs)
 {
-    <p> @tech.ToString()</p>}
+    <TechComponent SomeOthershit="tech" />
+}
 
-@code { 
+@code {
     private string _userInput;
     private int currentCount = 0;
     private List<Tech> _listOfTechs = new List<Tech>();

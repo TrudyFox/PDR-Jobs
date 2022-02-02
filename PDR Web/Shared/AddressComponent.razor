@@ -1,0 +1,22 @@
+﻿@using PDR_Jobs
+@using System
+<h3>AddressComponent</h3>
+
+@code {
+    private string _streetAddress;
+    private int _zipCode;
+    //... more coming
+
+    public void AddAddress()
+    {
+        var address = new Address();
+        address.StreetAddress = _streetAddress;
+        address.ZipCode = _zipCode;
+       
+
+        //dsInstance.data.techs.Add(tech);
+
+        //dsInstance.PDRDataSave();
+    }
+
+}

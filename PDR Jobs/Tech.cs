@@ -14,6 +14,7 @@ namespace PDR_Jobs
         public ContactInfo ContactInfos = new ContactInfo();
         public ProfilePage ProfilePage = new ProfilePage();
 
+
         public String FullName
         {
             get
