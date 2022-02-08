@@ -4,26 +4,26 @@
 <div class="alert alert-secondary mt-4" role="alert">
 
     <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
-    @if (Someshit != null)
+    @if (TheBodyShop != null)
     {
-        <strong>@Someshit.Name</strong>
+        <strong>@TheBodyShop.Name</strong>
         <br />
 
-        @if (Someshit.HomePage != null)
+        @if (TheBodyShop.HomePage != null)
         {
-            <a href="@Someshit.HomePage"><button> @Someshit.Name Web Page</button></a>
+            <a href="@TheBodyShop.HomePage"><button> @TheBodyShop.Name Web Page</button></a>
         }
     }
     <span class="text-nowrap">
-        @if (Someshit.Address != null)
+        @if (TheBodyShop.Address != null)
         {
-            @Someshit.Address //call new ;) adresscomponent
+            @TheBodyShop.Address //call new ;) adresscomponent
         }
     </span>
 </div>
 @code {
 
     [Parameter]
-    public BodyShop Someshit { get; set; }
+    public BodyShop TheBodyShop { get; set; }
 
 }

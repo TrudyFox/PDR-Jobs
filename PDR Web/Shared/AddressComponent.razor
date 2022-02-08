@@ -5,18 +5,23 @@
 @code {
     private string _streetAddress;
     private int _zipCode;
-    //... more coming
+    private String _city;
+    private String _state;
+
+//Maps or GPS?   
 
     public void AddAddress()
     {
         var address = new Address();
         address.StreetAddress = _streetAddress;
         address.ZipCode = _zipCode;
-       
+        address.City = _city;
+        address.State = _state;
+    }
 
-        //dsInstance.data.techs.Add(tech);
-
-        //dsInstance.PDRDataSave();
+    public Address address1
+    {
+        get; set;
     }
 
 }
