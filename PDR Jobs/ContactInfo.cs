@@ -8,8 +8,8 @@ namespace PDR_Jobs
 {
     public class ContactInfo
     {
-        private string phoneNumber;
-        private string email;
+        public string phoneNumber;
+        public string email;
 
         public string PhoneNumber
         {
