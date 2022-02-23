@@ -14,12 +14,14 @@
             <a href="@TheBodyShop.HomePage"><button> @TheBodyShop.Name Web Page</button></a>
         }
     }
-    <span class="text-nowrap">
-        @if (TheBodyShop.Address != null)
-        {
-            @TheBodyShop.Address //call new ;) adresscomponent
-        }
-    </span>
+<span class="text-nowrap">
+    @if (TheBodyShop.Address != null)
+    {
+       <AddressComponent Thebodyshop = "BodyShop.address " />//call new ;) adresscomponent
+
+    }
+
+</span>
 </div>
 @code {
 

@@ -1,0 +1,26 @@
+﻿<h3>ContactsComponent</h3>
+@using PDR_Jobs
+@using System
+
+<div class="alert alert-secondary mt-4" role="alert">
+
+    <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
+    @if (TheContactInfo != null)
+    {
+        <strong>@TheContactInfo.phoneNumber</strong>
+        <br />
+    }
+    <span class="text-nowrap">
+        @if (TheContactInfo != null)
+        {
+            <ContactsComponent TheContactInfo="TheContactInfo" />
+        }
+
+    </span>
+</div
+@code {
+
+    [Parameter]
+    public ContactInfo TheContactInfo { get; set; }
+
+}

@@ -1,0 +1,23 @@
+﻿<h3>ContactsInputComponent</h3>
+@using PDR_Jobs
+@inject PDR_Web.Data.PDRDataServ dsInstance
+@using System
+
+@code {
+    private string _phoneNumber;
+    private string _Email;
+
+
+    public void AddContactInfo()
+    {
+        var contactInfo = new ContactInfo();
+        contactInfo.PhoneNumber = _phoneNumber;
+        contactInfo.Email = _Email;
+     
+
+        dsInstance.data.contacts.Add(contactInfo);
+
+        dsInstance.PDRDataSave();
+    }
+
+}

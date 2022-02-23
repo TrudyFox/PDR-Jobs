@@ -14,6 +14,8 @@ namespace PDR_Jobs
     {
         public List<BodyShop> bodyShops = new List<BodyShop>();
         public List<Tech> techs = new List<Tech>();
+        public List<Address> address = new List<Address>();
+        public List<ContactInfo> contacts = new List<ContactInfo>();
         public List<StormEvent> stormEvents = new List<StormEvent>();
 
     }

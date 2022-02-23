@@ -1,0 +1,27 @@
+﻿@using PDR_Jobs
+@inject PDR_Web.Data.PDRDataServ dsInstance
+@using System
+<h3>AddressComponent</h3>
+
+@code {
+    private string _streetAddress;
+    private int _zipCode;
+    private String _city;
+    private String _state;
+
+    //Maps or GPS?
+
+    public void AddAddress()
+    {
+        var address = new Address();
+        address.StreetAddress = _streetAddress;
+        address.ZipCode = _zipCode;
+        address.City = _city;
+        address.State = _state;
+
+        dsInstance.data.address.Add(address);
+
+        dsInstance.PDRDataSave();
+    }
+
+}

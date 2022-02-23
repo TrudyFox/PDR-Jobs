@@ -1,27 +1,25 @@
-﻿@using PDR_Jobs
+﻿<h3>AddressComponent</h3>
+@using PDR_Jobs
 @using System
-<h3>AddressComponent</h3>
 
-@code {
-    private string _streetAddress;
-    private int _zipCode;
-    private String _city;
-    private String _state;
+    <div class="alert alert-secondary mt-4" role="alert">
 
-//Maps or GPS?   
-
-    public void AddAddress()
+        <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
+        @if (TheAddress != null)
     {
-        var address = new Address();
-        address.StreetAddress = _streetAddress;
-        address.ZipCode = _zipCode;
-        address.City = _city;
-        address.State = _state;
+        <strong>@TheAddress.Address</strong>
+        <br />
     }
 
-    public Address address1
+    </div>
+    @code {
+
+    [Parameter]
+    public Address TheAddress
     {
         get; set;
+    }
+
     }
 
 }
